@@ -65,11 +65,12 @@ Release Date: Not Released
 
    -  :doc:`Date Helper <helpers/date_helper>` changes include:
 
-      - :func:`now()` now works with all timezone strings supported by PHP.
       - Added an optional third parameter to :func:`timespan()` that constrains the number of time units displayed.
       - Added an optional parameter to :func:`timezone_menu()` that allows more attributes to be added to the generated select tag.
-      - Deprecated ``standard_date()``, which now just uses the native ``date()`` with `DateTime constants <http://www.php.net/manual/en/class.datetime.php#datetime.constants.types>`_.
       - Added function :func:`date_range()` that generates a list of dates between a specified period.
+      - Deprecated ``standard_date()``, which now just uses the native ``date()`` with `DateTime constants <http://www.php.net/manual/en/class.datetime.php#datetime.constants.types>`_.
+      - Changed :func:`now()` to work with all timezone strings supported by PHP.
+      - Changed :func:`days_in_month()` to use the native ``cal_days_in_month()`` PHP function, if available.
 
    -  :doc:`URL Helper <helpers/url_helper>` changes include:
 
@@ -299,7 +300,9 @@ Release Date: Not Released
 
       -  Added method chaining support.
       -  Added configuration to generate days of other months instead of blank cells.
-      -  Auto set *next_prev_url* if it is empty and *show_prev_next* is set to TRUE.
+      -  Added auto-configuration for *next_prev_url* if it is empty and *show_prev_next* is set to TRUE.
+      -  Added support for templating via an array in addition to the encoded string.
+      -  Changed method ``get_total_days()`` to be an alias for :doc:`Date Helper <helpers/date_helper>` :func:`days_in_month()`.
 
    -  :doc:`Cart Library <libraries/cart>` changes include:
 
@@ -505,8 +508,15 @@ Release Date: Not Released
 
       -  ``UTF8_ENABLED`` now requires only one of `Multibyte String <http://php.net/mbstring>`_ or `iconv <http://php.net/iconv>`_ to be available instead of both.
       -  Changed method ``clean_string()`` to utilize ``mb_convert_encoding()`` if it is available but ``iconv()`` is not.
+      -  Renamed method ``_is_ascii()`` to ``is_ascii()`` and made it public.
 
-   -  Added `compatibility layers <general/compatibility_functions>` for PHP's `mbstring <http://php.net/mbstring>`_ (limited support) and `password <http://php.net/password>`_ extensions.
+   -  Added `compatibility layers <general/compatibility_functions>` for:
+
+      - `Multibyte String <http://php.net/mbstring>`_ (limited support).
+      - `Hash <http://php.net/hash>`_ (just ``hash_pbkdf2()``).
+      - `Password Hashing <http://php.net/password>`_.
+      - `Array Functions <http://php.net/book.array>`_ (``array_column()``, ``array_replace()``, ``array_replace_recursive()``).
+
    -  Removed ``CI_CORE`` boolean constant from *CodeIgniter.php* (no longer Reactor and Core versions).
    -  Log Library will now try to create the **log_path** directory if it doesn't exist.
    -  Added support for HTTP-Only cookies with new config option *cookie_httponly* (default FALSE).

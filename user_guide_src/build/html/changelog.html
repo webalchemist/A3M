@@ -30,7 +30,7 @@
 	<body>
 		<div id="table-contents">
 			<div class="toctree-wrapper compound">
-			<function <lambda> at 0x5177488>
+			<function <lambda> at 0x4805b18>
 			</div>
 		</div>
 
@@ -130,11 +130,12 @@ Only entries in <tt class="docutils literal"><span class="pre">$autoload['librar
 </li>
 <li>Helpers<ul>
 <li><a class="reference internal" href="helpers/date_helper.html"><em>Date Helper</em></a> changes include:<ul>
-<li><a class="reference internal" href="helpers/date_helper.html#now" title="now"><tt class="xref py py-func docutils literal"><span class="pre">now()</span></tt></a> now works with all timezone strings supported by PHP.</li>
 <li>Added an optional third parameter to <a class="reference internal" href="helpers/date_helper.html#timespan" title="timespan"><tt class="xref py py-func docutils literal"><span class="pre">timespan()</span></tt></a> that constrains the number of time units displayed.</li>
 <li>Added an optional parameter to <a class="reference internal" href="helpers/date_helper.html#timezone_menu" title="timezone_menu"><tt class="xref py py-func docutils literal"><span class="pre">timezone_menu()</span></tt></a> that allows more attributes to be added to the generated select tag.</li>
-<li>Deprecated <tt class="docutils literal"><span class="pre">standard_date()</span></tt>, which now just uses the native <tt class="docutils literal"><span class="pre">date()</span></tt> with <a class="reference external" href="http://www.php.net/manual/en/class.datetime.php#datetime.constants.types">DateTime constants</a>.</li>
 <li>Added function <a class="reference internal" href="helpers/date_helper.html#date_range" title="date_range"><tt class="xref py py-func docutils literal"><span class="pre">date_range()</span></tt></a> that generates a list of dates between a specified period.</li>
+<li>Deprecated <tt class="docutils literal"><span class="pre">standard_date()</span></tt>, which now just uses the native <tt class="docutils literal"><span class="pre">date()</span></tt> with <a class="reference external" href="http://www.php.net/manual/en/class.datetime.php#datetime.constants.types">DateTime constants</a>.</li>
+<li>Changed <a class="reference internal" href="helpers/date_helper.html#now" title="now"><tt class="xref py py-func docutils literal"><span class="pre">now()</span></tt></a> to work with all timezone strings supported by PHP.</li>
+<li>Changed <a class="reference internal" href="helpers/date_helper.html#days_in_month" title="days_in_month"><tt class="xref py py-func docutils literal"><span class="pre">days_in_month()</span></tt></a> to use the native <tt class="docutils literal"><span class="pre">cal_days_in_month()</span></tt> PHP function, if available.</li>
 </ul>
 </li>
 <li><a class="reference internal" href="helpers/url_helper.html"><em>URL Helper</em></a> changes include:<ul>
@@ -363,7 +364,9 @@ Only entries in <tt class="docutils literal"><span class="pre">$autoload['librar
 <li><a class="reference internal" href="libraries/calendar.html"><em>Calendar Library</em></a> changes include:<ul>
 <li>Added method chaining support.</li>
 <li>Added configuration to generate days of other months instead of blank cells.</li>
-<li>Auto set <em>next_prev_url</em> if it is empty and <em>show_prev_next</em> is set to TRUE.</li>
+<li>Added auto-configuration for <em>next_prev_url</em> if it is empty and <em>show_prev_next</em> is set to TRUE.</li>
+<li>Added support for templating via an array in addition to the encoded string.</li>
+<li>Changed method <tt class="docutils literal"><span class="pre">get_total_days()</span></tt> to be an alias for <a class="reference internal" href="helpers/date_helper.html"><em>Date Helper</em></a> <a class="reference internal" href="helpers/date_helper.html#days_in_month" title="days_in_month"><tt class="xref py py-func docutils literal"><span class="pre">days_in_month()</span></tt></a>.</li>
 </ul>
 </li>
 <li><a class="reference internal" href="libraries/cart.html"><em>Cart Library</em></a> changes include:<ul>
@@ -569,9 +572,16 @@ Only entries in <tt class="docutils literal"><span class="pre">$autoload['librar
 <li>UTF-8 Library changes include:<ul>
 <li><tt class="docutils literal"><span class="pre">UTF8_ENABLED</span></tt> now requires only one of <a class="reference external" href="http://php.net/mbstring">Multibyte String</a> or <a class="reference external" href="http://php.net/iconv">iconv</a> to be available instead of both.</li>
 <li>Changed method <tt class="docutils literal"><span class="pre">clean_string()</span></tt> to utilize <tt class="docutils literal"><span class="pre">mb_convert_encoding()</span></tt> if it is available but <tt class="docutils literal"><span class="pre">iconv()</span></tt> is not.</li>
+<li>Renamed method <tt class="docutils literal"><span class="pre">_is_ascii()</span></tt> to <tt class="docutils literal"><span class="pre">is_ascii()</span></tt> and made it public.</li>
 </ul>
 </li>
-<li>Added <cite>compatibility layers &lt;general/compatibility_functions&gt;</cite> for PHP&#8217;s <a class="reference external" href="http://php.net/mbstring">mbstring</a> (limited support) and <a class="reference external" href="http://php.net/password">password</a> extensions.</li>
+<li>Added <cite>compatibility layers &lt;general/compatibility_functions&gt;</cite> for:<ul>
+<li><a class="reference external" href="http://php.net/mbstring">Multibyte String</a> (limited support).</li>
+<li><a class="reference external" href="http://php.net/hash">Hash</a> (just <tt class="docutils literal"><span class="pre">hash_pbkdf2()</span></tt>).</li>
+<li><a class="reference external" href="http://php.net/password">Password Hashing</a>.</li>
+<li><a class="reference external" href="http://php.net/book.array">Array Functions</a> (<tt class="docutils literal"><span class="pre">array_column()</span></tt>, <tt class="docutils literal"><span class="pre">array_replace()</span></tt>, <tt class="docutils literal"><span class="pre">array_replace_recursive()</span></tt>).</li>
+</ul>
+</li>
 <li>Removed <tt class="docutils literal"><span class="pre">CI_CORE</span></tt> boolean constant from <em>CodeIgniter.php</em> (no longer Reactor and Core versions).</li>
 <li>Log Library will now try to create the <strong>log_path</strong> directory if it doesn&#8217;t exist.</li>
 <li>Added support for HTTP-Only cookies with new config option <em>cookie_httponly</em> (default FALSE).</li>

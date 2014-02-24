@@ -175,15 +175,7 @@ class CI_Output {
 	 */
 	public function append_output($output)
 	{
-		if (empty($this->final_output))
-		{
-			$this->final_output = $output;
-		}
-		else
-		{
-			$this->final_output .= $output;
-		}
-
+		$this->final_output .= $output;
 		return $this;
 	}
 
@@ -401,10 +393,11 @@ class CI_Output {
 	 */
 	public function _display($output = '')
 	{
-		// Note:  We use globals because we can't use $CI =& get_instance()
+		// Note:  We use load_class() because we can't use $CI =& get_instance()
 		// since this function is sometimes called by the caching mechanism,
 		// which happens before the CI super object is available.
-		global $BM, $CFG;
+		$BM =& load_class('Benchmark', 'core');
+		$CFG =& load_class('Config', 'core');
 
 		// Grab the super object if we can.
 		if (class_exists('CI_Controller', FALSE))

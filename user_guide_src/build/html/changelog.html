@@ -30,7 +30,7 @@
 	<body>
 		<div id="table-contents">
 			<div class="toctree-wrapper compound">
-			<function <lambda> at 0x4794b90>
+			<function <lambda> at 0x633eb18>
 			</div>
 		</div>
 
@@ -538,6 +538,7 @@ Only entries in <tt class="docutils literal"><span class="pre">$autoload['librar
 <li>Added function <a class="reference internal" href="general/common_functions.html#is_cli" title="is_cli"><tt class="xref py py-func docutils literal"><span class="pre">is_cli()</span></tt></a> to replace the <tt class="docutils literal"><span class="pre">CI_Input::is_cli_request()</span></tt> method.</li>
 <li>Added function <a class="reference internal" href="general/common_functions.html#function_usable" title="function_usable"><tt class="xref py py-func docutils literal"><span class="pre">function_usable()</span></tt></a> to work around a bug in <cite>Suhosin &lt;http://www.hardened-php.net/suhosin/&gt;</cite>.</li>
 <li>Removed the third (<cite>$php_error</cite>) argument from function <a class="reference internal" href="general/errors.html#log_message" title="log_message"><tt class="xref py py-func docutils literal"><span class="pre">log_message()</span></tt></a>.</li>
+<li>Changed internal function <tt class="docutils literal"><span class="pre">load_class()</span></tt> to accept a constructor parameter instead of (previously unused) class name prefix.</li>
 </ul>
 </li>
 <li><a class="reference internal" href="libraries/output.html"><em>Output Library</em></a> changes include:<ul>
@@ -791,6 +792,7 @@ Only entries in <tt class="docutils literal"><span class="pre">$autoload['librar
 <li>Fixed a bug where <a class="reference internal" href="libraries/table.html"><em>HTML Table Library</em></a> ignored its <em>auto_heading</em> setting if headings were not already set.</li>
 <li>Fixed a bug (#2364) - <a class="reference internal" href="libraries/pagination.html"><em>Pagination Library</em></a> appended the query string (if used) multiple times when there are successive calls to <tt class="docutils literal"><span class="pre">create_links()</span></tt> with no <tt class="docutils literal"><span class="pre">initialize()</span></tt> in between them.</li>
 <li>Partially fixed a bug (#261) - UTF-8 class method <tt class="docutils literal"><span class="pre">clean_string()</span></tt> generating log messages and/or not producing the desired result due to an upstream bug in iconv.</li>
+<li>Fixed a bug where <tt class="docutils literal"><span class="pre">CI_Xmlrpcs::parseRequest()</span></tt> could fail if <tt class="docutils literal"><span class="pre">$HTTP_RAW_POST_DATA</span></tt> is not populated.</li>
 </ul>
 </div>
 </div>

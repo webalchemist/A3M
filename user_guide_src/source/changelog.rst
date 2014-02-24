@@ -474,6 +474,7 @@ Release Date: Not Released
       -  Added function :func:`is_cli()` to replace the ``CI_Input::is_cli_request()`` method.
       -  Added function :func:`function_usable()` to work around a bug in `Suhosin <http://www.hardened-php.net/suhosin/>`.
       -  Removed the third (`$php_error`) argument from function :func:`log_message()`.
+      -  Changed internal function ``load_class()`` to accept a constructor parameter instead of (previously unused) class name prefix.
 
    -  :doc:`Output Library <libraries/output>` changes include:
 
@@ -725,6 +726,7 @@ Bug fixes for 3.0
 -  Fixed a bug where :doc:`HTML Table Library <libraries/table>` ignored its *auto_heading* setting if headings were not already set.
 -  Fixed a bug (#2364) - :doc:`Pagination Library <libraries/pagination>` appended the query string (if used) multiple times when there are successive calls to ``create_links()`` with no ``initialize()`` in between them.
 -  Partially fixed a bug (#261) - UTF-8 class method ``clean_string()`` generating log messages and/or not producing the desired result due to an upstream bug in iconv.
+-  Fixed a bug where ``CI_Xmlrpcs::parseRequest()`` could fail if ``$HTTP_RAW_POST_DATA`` is not populated.
 
 Version 2.1.4
 =============

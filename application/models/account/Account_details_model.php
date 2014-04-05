@@ -70,19 +70,7 @@ class Account_details_model extends CI_Model {
 		// At this point, if country is still not determined, use ip address to determine country
 		if ( ! isset($attributes['country']))
 		{
-			$this->load->model('account/ref_iptocountry_model');
-			if ($country = $this->ref_iptocountry_model->get_by_ip($this->input->ip_address()))
-			{
-				$attributes['country'] = $country;
-
-				// At this point, if timezone is still not determined, use ip detected country to determine timezone
-				if ( ! isset($attributes['timezone']))
-				{
-					$this->load->model('account/ref_zoneinfo_model');
-					$result = $this->ref_zoneinfo_model->get_by_country($attributes['country']);
-					if (isset($result[0])) $attributes['timezone'] = $result[0]->zoneinfo;
-				}
-			}
+			
 		}
 		
 		// Check that it's a recognized language (see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)

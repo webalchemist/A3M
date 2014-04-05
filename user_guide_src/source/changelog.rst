@@ -86,7 +86,8 @@ Release Date: Not Released
 
       - Added more doctypes.
       - Changed application and environment config files to be loaded in a cascade-like manner.
-      - The doctypes array is now cached and loaded only once.
+      - Changed :func:`doctype()` to cache and only load once the doctypes array.
+      - Deprecated functions ``nbs()`` and ``br()``, which are just aliases for the native ``str_repeat()`` with ``&nbsp;`` and ``<br />`` respectively.
 
    -  :doc:`Inflector Helper <helpers/inflector_helper>` changes include:
 
@@ -155,8 +156,9 @@ Release Date: Not Released
    -  Renamed internal method ``_escape_identifiers()`` to ``escape_identifiers()``.
    -  Updated ``escape_identifiers()`` to accept an array of fields as well as strings.
    -  MySQL and MySQLi drivers now require at least MySQL version 5.1.
+   -  Added a ``$persistent`` parameter to ``db_connect()`` and changed ``db_pconnect()`` to be an alias for ``db_connect(TRUE)``.
    -  ``db_set_charset()`` now only requires one parameter (collation was only needed due to legacy support for MySQL versions prior to 5.1).
-   -  ``db_select()`` will now always (if required by the driver) be called by ``db_connect()`` / ``db_pconnect()`` instead of only when initializing.
+   -  ``db_select()`` will now always (if required by the driver) be called by ``db_connect()`` instead of only when initializing.
    -  Replaced the ``_error_message()`` and ``_error_number()`` methods with ``error()``, which returns an array containing the last database error code and message.
    -  Improved ``version()`` implementation so that drivers that have a native function to get the version number don't have to be defined in the core ``DB_driver`` class.
    -  Added capability for packages to hold *config/database.php* config files.
@@ -290,6 +292,7 @@ Release Date: Not Released
    -  :doc:`File Uploading Library <libraries/file_uploading>` changes include:
 
       -  Added method chaining support.
+      -  Added support for using array notation in file field names.
       -  Added **max_filename_increment** and **file_ext_tolower** configuration settings.
       -  Added **min_width** and **min_height** configuration settings for images.
       -  Added **mod_mime_fix** configuration setting to disable suffixing multiple file extensions with an underscore.
@@ -314,7 +317,7 @@ Release Date: Not Released
       -  Added unicode support for product names.
       -  Added support for disabling product name strictness via the ``$product_name_safe`` property.
       -  Changed ``insert()`` method to auto-increment quantity for an item when inserted twice instead of resetting it.
-      -	 Changed ``update()`` method to support updating all properties attached to an item.
+      -	 Changed ``update()`` method to support updating all properties attached to an item and not to require 'qty'.
 
    -  :doc:`Image Manipulation Library <libraries/image_lib>` changes include:
 
@@ -342,6 +345,7 @@ Release Date: Not Released
       -  :doc:`Language <libraries/language>` line keys must now be prefixed with **form_validation_**.
       -  Added rule **alpha_numeric_spaces**.
       -  Added support for custom error messages per field rule.
+      -  Added support for callable rules when they are passed as an array.
 
    -  :doc:`Caching Library <libraries/caching>` changes include:
 
@@ -463,6 +467,7 @@ Release Date: Not Released
       -  Changed method ``_fetch_from_array()`` to parse array notation in field name.
       -  Added an option for ``_clean_input_keys()`` to return FALSE instead of terminating the whole script.
       -  Deprecated the ``is_cli_request()`` method, it is now an alias for the new :func:`is_cli()` common function.
+      -  Added an ``$xss_clean`` parameter to method ``user_agent()`` and removed the ``$user_agent`` property.
 
    -  :doc:`Common functions <general/common_functions>` changes include:
 
@@ -474,6 +479,7 @@ Release Date: Not Released
       -  Added function :func:`is_cli()` to replace the ``CI_Input::is_cli_request()`` method.
       -  Added function :func:`function_usable()` to work around a bug in `Suhosin <http://www.hardened-php.net/suhosin/>`.
       -  Removed the third (`$php_error`) argument from function :func:`log_message()`.
+      -  Changed internal function ``load_class()`` to accept a constructor parameter instead of (previously unused) class name prefix.
 
    -  :doc:`Output Library <libraries/output>` changes include:
 
@@ -504,6 +510,7 @@ Release Date: Not Released
 
    -  :doc:`Hooks Library <general/hooks>` changes include:
 
+      -  Added support for closure hooks (or anything that ``is_callable()`` returns TRUE for).
       -  Renamed method ``_call_hook()`` to ``call_hook()``.
       -  Class instances are now stored in order to maintain their state.
 
@@ -725,6 +732,8 @@ Bug fixes for 3.0
 -  Fixed a bug where :doc:`HTML Table Library <libraries/table>` ignored its *auto_heading* setting if headings were not already set.
 -  Fixed a bug (#2364) - :doc:`Pagination Library <libraries/pagination>` appended the query string (if used) multiple times when there are successive calls to ``create_links()`` with no ``initialize()`` in between them.
 -  Partially fixed a bug (#261) - UTF-8 class method ``clean_string()`` generating log messages and/or not producing the desired result due to an upstream bug in iconv.
+-  Fixed a bug where ``CI_Xmlrpcs::parseRequest()`` could fail if ``$HTTP_RAW_POST_DATA`` is not populated.
+-  Fixed a bug in :doc:`Zip Library <libraries/zip>` internal method ``_get_mod_time()`` where it was not parsing result returned by ``filemtime()``.
 
 Version 2.1.4
 =============

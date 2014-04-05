@@ -13,6 +13,9 @@
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.
 
+## v1.0.2
+* Update: #90 Update redirect_fb.php to include all the necessary views.
+
 ## v1.0.1
 * New Feature: First created user automatically becomes admin (https://github.com/donjakobo/A3M/commit/2d79aa3)
 

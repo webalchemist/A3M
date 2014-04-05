@@ -89,7 +89,7 @@ class Manage_roles extends CI_Controller {
   /**
    * Manage Roles
    */
-  function save($id=null)
+  function save($id = NULL)
   {
     // Keep track if this is a new role
     $is_new = empty($id);

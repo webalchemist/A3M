@@ -18,7 +18,7 @@
 	<span class="help-inline">
 			<?php echo form_error('sign_in_username_email'); ?>
 				<?php if (isset($sign_in_username_email_error)) : ?>
-		<span class="field_error"><?php echo $sign_in_username_email_error; ?></span>
+		<span class="alert alert-danger"><?php echo $sign_in_username_email_error; ?></span>
 				<?php endif; ?>
 			</span>
 			<?php endif; ?>
@@ -37,7 +37,7 @@
 		<?php if (isset($recaptcha)) : ?>
 			<?php echo $recaptcha; ?>
 			<?php if (isset($sign_in_recaptcha_error)) : ?>
-				<span class="field_error"><?php echo $sign_in_recaptcha_error; ?></span>
+				<span class="alert alert-danger"><?php echo $sign_in_recaptcha_error; ?></span>
 			<?php endif; ?>
 		<?php endif; ?>
 	    </div>
@@ -67,7 +67,7 @@
 
 <div class="col-lg-6">
 	<?php if ($third_party_auth = $this->config->item('third_party_auth')) : ?>
-		<h3><?php echo sprintf(lang('sign_up_third_party_heading')); ?></h3>
+		<h3><?php echo lang('sign_in_third_party_heading'); ?></h3>
 		<ul>
 			<?php foreach($third_party_auth['providers'] as $provider_name => $provider_values) : ?>
 				<?php if($provider_values['enabled']) : ?>

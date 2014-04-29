@@ -62,7 +62,7 @@ class Sign_up extends CI_Controller {
 		if (($this->form_validation->run() === TRUE) && ($this->config->item("sign_up_enabled")))
 		{
 			// Either already pass recaptcha or just passed recaptcha
-			if ( ($this->session->userdata('sign_up_recaptcha_pass') == FALSE || $recaptcha_result === FALSE) && $this->config->item("sign_up_recaptcha_enabled") === TRUE)
+			if( ($this->session->userdata('sign_up_recaptcha_pass') == FALSE || $recaptcha_result === FALSE) && $this->config->item("sign_up_recaptcha_enabled") === TRUE)
 			{
 				$data['sign_up_recaptcha_error'] = $this->input->post('recaptcha_response_field') ? lang('sign_up_recaptcha_incorrect') : lang('sign_up_recaptcha_required');
 			}
@@ -73,7 +73,7 @@ class Sign_up extends CI_Controller {
 
 				// Create user
 				$user_id = $this->Account_model->create($this->input->post('sign_up_username', TRUE), $this->input->post('sign_up_email', TRUE), $this->input->post('sign_up_password', TRUE));
-
+		
 				// Add user details (auto detected country, language, timezone)
 				$this->Account_details_model->update($user_id);
 				

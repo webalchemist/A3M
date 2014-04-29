@@ -12,6 +12,7 @@
 * Change: #70 Changed the naming structure for A3M.
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.
+* Remove: Currency table and reference to country by IP table and functionality
 
 ## v1.0.2
 * Update: #90 Update redirect_fb.php to include all the necessary views.

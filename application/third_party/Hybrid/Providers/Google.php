@@ -29,6 +29,12 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
 		$this->api->authorize_url  = "https://accounts.google.com/o/oauth2/auth";
 		$this->api->token_url      = "https://accounts.google.com/o/oauth2/token";
 		$this->api->token_info_url = "https://www.googleapis.com/oauth2/v2/tokeninfo";
+        
+		// Override the redirect uri when it's set in the config parameters. This way we prevent
+		// redirect uri mismatches when authenticating with Google.
+		if( isset( $this->config['redirect_uri'] ) && ! empty( $this->config['redirect_uri'] ) ){
+			$this->api->redirect_uri = $this->config['redirect_uri'];
+		}
 	}
 
 	/**
@@ -37,7 +43,7 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
 	function loginBegin()
 	{
 		$parameters = array("scope" => $this->scope, "access_type" => "offline");
-		$optionals  = array("scope", "access_type", "redirect_uri", "approval_prompt", "hd");
+		$optionals  = array("scope", "access_type", "redirect_uri", "approval_prompt", "hd", "state");
 
 		foreach ($optionals as $parameter){
 			if( isset( $this->config[$parameter] ) && ! empty( $this->config[$parameter] ) ){
@@ -62,12 +68,17 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
 		// ask google api for user infos
 		if (strpos($this->scope, '/auth/userinfo.email') !== false) {
 			$verified = $this->api->api( "https://www.googleapis.com/oauth2/v2/userinfo" );
+
+			if ( ! isset( $verified->id ) || isset( $verified->error ) )
+				$verified = new stdClass();
+		} else {
+			$verified = $this->api->api( "https://www.googleapis.com/plus/v1/people/me/openIdConnect" );
+
+			if ( ! isset( $verified->sub ) || isset( $verified->error ) )
+				$verified = new stdClass();
 		}
-		$response = $this->api->api( "https://www.googleapis.com/plus/v1/people/me" ); 		
-		
-		if ( ! isset( $verified->id ) || isset( $verified->error ) ){
-			$verified = new stdClass();
-		}
+
+		$response = $this->api->api( "https://www.googleapis.com/plus/v1/people/me" );
 		if ( ! isset( $response->id ) || isset( $response->error ) ){
 			throw new Exception( "User profile request failed! {$this->providerId} returned an invalid response.", 6 );
 		}
@@ -83,6 +94,18 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
 		$this->user->profile->language      = (property_exists($response,'locale'))?$response->locale:((property_exists($verified,'locale'))?$verified->locale:"");
 		$this->user->profile->email         = (property_exists($response,'email'))?$response->email:((property_exists($verified,'email'))?$verified->email:"");
 		$this->user->profile->emailVerified = (property_exists($verified,'email'))?$verified->email:"";
+		if (property_exists($response, 'emails')) {
+			if (count($response->emails) == 1) {
+				$this->user->profile->email = $response->emails[0]->value;
+			} else {
+				foreach ($response->emails as $email) {
+					if ($email->type == 'account') {
+						$this->user->profile->email = $email->value;
+						break;
+					}
+				}
+			}
+		}
 		$this->user->profile->phone 		= (property_exists($response,'phone'))?$response->phone:"";
 		$this->user->profile->country 		= (property_exists($response,'country'))?$response->country:"";
 		$this->user->profile->region 		= (property_exists($response,'region'))?$response->region:"";

@@ -62,7 +62,7 @@ class Sign_up extends CI_Controller {
 		if (($this->form_validation->run() === TRUE) && ($this->config->item("sign_up_enabled")))
 		{
 			// Either already pass recaptcha or just passed recaptcha
-			if ( ($this->session->userdata('sign_up_recaptcha_pass') == FALSE || $recaptcha_result === FALSE) && $this->config->item("sign_up_recaptcha_enabled") === TRUE)
+			if( ($this->session->userdata('sign_up_recaptcha_pass') == FALSE || $recaptcha_result === FALSE) && $this->config->item("sign_up_recaptcha_enabled") === TRUE)
 			{
 				$data['sign_up_recaptcha_error'] = $this->input->post('recaptcha_response_field') ? lang('sign_up_recaptcha_incorrect') : lang('sign_up_recaptcha_required');
 			}
@@ -73,7 +73,7 @@ class Sign_up extends CI_Controller {
 
 				// Create user
 				$user_id = $this->Account_model->create($this->input->post('sign_up_username', TRUE), $this->input->post('sign_up_email', TRUE), $this->input->post('sign_up_password', TRUE));
-
+		
 				// Add user details (auto detected country, language, timezone)
 				$this->Account_details_model->update($user_id);
 				
@@ -107,13 +107,26 @@ class Sign_up extends CI_Controller {
 					), TRUE));
 					if($this->email->send())
 					{
-						// Load reset password sent view
+						if($this->config->item("sign_up_auto_sign_in"))
+						{
+							// Run sign in routine
+							$this->authentication->sign_in($this->input->post('sign_in_username_email', TRUE), $this->input->post('sign_in_password', TRUE), $this->input->post('sign_in_remember', TRUE));
+						}
+						
+						// Load confirmation view
 						$data['content'] = $this->load->view('account/account_validation_send', isset($data) ? $data : NULL, TRUE);
 						$this->load->view('template', $data);
 					}
 					else
 					{
-						echo($this->email->print_debugger());
+						if(ENVIRONMENT == 'development')
+						{
+							$data['content'] = $this->email->print_debugger();
+						}
+						else
+						{
+							show_error('There was an error sending an e-mail. Please contact the webmaster.');
+						}
 					}
 					
 					return;

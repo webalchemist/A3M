@@ -15,7 +15,10 @@
 * Remove: Currency table and reference to country by IP table and functionality
 
 ## v1.0.2
-* Update: #90 Update redirect_fb.php to include all the necessary views.
+* Update: CodeIgniter to 2.2.0
+* Update: Facebook SDK to v3.2.3
+* Update: #90 Facebook Redirect page view
+* Update: Removed align parameter from photo helper and added function description
 
 ## v1.0.1
 * New Feature: First created user automatically becomes admin (https://github.com/donjakobo/A3M/commit/2d79aa3)

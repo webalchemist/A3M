@@ -92,7 +92,14 @@ class Validate extends CI_Controller {
 	    }
 	    else
 	    {
-		echo($this->email->print_debugger());
+		if(ENVIRONMENT == 'development')
+		{
+		    echo($this->email->print_debugger());
+		}
+		else
+		{
+		    show_error('There was an error sending the e-mail. Please contact the webmaster.');
+		}
 	    }
 	}
 	else

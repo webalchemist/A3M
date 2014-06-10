@@ -9,12 +9,14 @@
 * Update: Updated Twitter Bootstrap to 3.1.1
 * Update: #70 Updated to Twitter Bootstrap 3.0.3
 * Update: #47 Updated to CodeIgniter 3.
-* Update: Gravatar library
 * Change: #70 Changed the naming structure for A3M.
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.
+* Change: Profile settings was merged into Account settings to reduce user confusion
 * Remove: Currency table and reference to country by IP table and functionality
 
+## v1.0.3
+* Update: Gravatar library
 
 ## v1.0.2
 * Update: CodeIgniter to 2.2.0

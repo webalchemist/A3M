@@ -54,6 +54,5 @@ class Linked_accounts extends CI_Controller {
 		$this->load->view('template', $data);
 	}
 }
-
 /* End of file Connect_accounts.php */
 /* Location: ./application/controllers/account/Connect_accounts.php */

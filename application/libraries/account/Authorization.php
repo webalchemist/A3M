@@ -139,9 +139,6 @@ class Authorization
     
     return $this->CI->Acl_role_model->has_role($role, $account_id);
   }
-
 }
-
-
 /* End of file Authorization.php */
 /* Location: ./application/account/libraries/Authorization.php */

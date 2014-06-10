@@ -8,7 +8,8 @@
  * @package A3M
  * @subpackage Models
  */
-class Account_details_model extends CI_Model {
+class Account_details_model extends CI_Model
+{
 
 	/**
 	 * Get details for all account
@@ -18,7 +19,7 @@ class Account_details_model extends CI_Model {
 	 */
 	function get()
 	{
-		return $this->db->get('a3m_account_details')->result();
+		return $this->db->get($this->db->dbprefix . 'a3m_account_details')->result();
 	}
 
 	/**
@@ -30,7 +31,7 @@ class Account_details_model extends CI_Model {
 	 */
 	function get_by_account_id($account_id)
 	{
-		return $this->db->get_where('a3m_account_details', array('account_id' => $account_id))->row();
+		return $this->db->get_where($this->db->dbprefix . 'a3m_account_details', array('account_id' => $account_id))->row();
 	}
 
 	// --------------------------------------------------------------------
@@ -73,14 +74,6 @@ class Account_details_model extends CI_Model {
 			$country = $this->ref_country_model->get($attributes['country']);
 			$country ? $attributes['country'] = $country->alpha2 : NULL;
 		}
-		
-		// @todo This needs to be replaced by something more sensible as the default database is too big with this.
-		// At this point, if country is still not determined, use ip address to determine country
-		if ( ! isset($attributes['country']))
-		{
-			
-		}
-		
 		// Check that it's a recognized language (see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
 		if (isset($attributes['language']))
 		{
@@ -118,17 +111,16 @@ class Account_details_model extends CI_Model {
 		if ($this->get_by_account_id($account_id))
 		{
 			$this->db->where('account_id', $account_id);
-			$this->db->update('a3m_account_details', $attributes);
+			$this->db->update($this->db->dbprefix . 'a3m_account_details', $attributes);
 		}
 		// Insert
 		else
 		{
 			$attributes['account_id'] = $account_id;
-			$this->db->insert('a3m_account_details', $attributes);
+			$this->db->insert($this->db->dbprefix . 'a3m_account_details', $attributes);
 		}
 	}
 
 }
-
 /* End of file Account_details_model.php */
 /* Location: ./application/models/account/Account_details_model.php */

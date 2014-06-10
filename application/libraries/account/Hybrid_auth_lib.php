@@ -1,4 +1,10 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * Hybrid Authentication library
+ * @package A3M
+ * @subpackage Libraries
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require APPPATH.'/third_party/Hybrid/Auth.php';
 
@@ -42,6 +48,5 @@ class Hybrid_auth_lib extends Hybrid_Auth
         return isset($this->setup['providers'][$provider]) && $this->setup['providers'][$provider]['enabled'];
     }
 }
-
 /* End of file Hybrid_auth_lib.php */
 /* Location: ./application/libraries/Hybrid_auth_lib.php */

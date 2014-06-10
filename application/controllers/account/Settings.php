@@ -229,6 +229,5 @@ class Settings extends CI_Controller
 		echo $this->username_check($username);
 	}
 }
-
 /* End of file Settings.php */
 /* Location: ./application/controllers/account/Settings.php */

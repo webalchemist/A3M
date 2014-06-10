@@ -5,6 +5,7 @@
 * New feature: Added jQuery validation to sign up page.
 * New feature: #74 Force user to reset password upon next sign-in
 * New feature: #75 Option to send user credentials to new user created via administration
+* New feature: Added support for table prefixes
 * Update: Update to jQuery 2.1.0
 * Update: Updated Twitter Bootstrap to 3.1.1
 * Update: #70 Updated to Twitter Bootstrap 3.0.3

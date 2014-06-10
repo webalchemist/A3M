@@ -5,7 +5,8 @@
  * @package A3M
  * @subpackage Controllers
  */
-class Forgot_password extends CI_Controller {
+class Forgot_password extends CI_Controller
+{
 
 	/**
 	 * Constructor

@@ -1,7 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Manage users
- * @package A3Ms
+ * @package A3M
+ * @subpackage Controllers
  */
 class Manage_users extends CI_Controller
 {
@@ -290,11 +291,11 @@ class Manage_users extends CI_Controller
    * Filter the user list by permission or role.
    *
    * @access public
-   * @param string $type (permission, role)
-   * @param int $id (permission_id, role_id)
+   * @param string $type permission, role
+   * @param int $id permission_id, role_id
    * @return void
    */
-  function filter($type=null,$id=null)
+  function filter($type = NULL, $id = NULL)
   {
     $this->index();
   }

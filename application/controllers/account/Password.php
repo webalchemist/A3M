@@ -5,7 +5,8 @@
  * @package A3M
  * @subpackage Controllers
  */
-class Password extends CI_Controller {
+class Password extends CI_Controller
+{
 
 	/**
 	 * Constructor

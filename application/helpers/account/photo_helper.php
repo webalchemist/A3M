@@ -1,4 +1,10 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * Helper for managing and getting user avatars
+ * @package A3M
+ * @subpackage Helpers
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Shows users photo

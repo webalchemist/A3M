@@ -5,7 +5,8 @@
  * @package A3M
  * @subpackage Controllers
  */
-class Sign_in extends CI_Controller {
+class Sign_in extends CI_Controller
+{
 
 	/**
 	 * Constructor

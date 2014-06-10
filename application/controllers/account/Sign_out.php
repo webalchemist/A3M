@@ -5,7 +5,8 @@
  * @package A3M
  * @subpackage Controllers
  */
-class Sign_out extends CI_Controller {
+class Sign_out extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -46,7 +47,5 @@ class Sign_out extends CI_Controller {
 	}
 
 }
-
-
 /* End of file Sign_out.php */
 /* Location: ./application/controllers/account/Sign_out.php */

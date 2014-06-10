@@ -225,6 +225,5 @@ class Manage_permissions extends CI_Controller
     return $this->Acl_permission_model->get_by_name($permission_name) ? TRUE : FALSE;
   }
 }
-
 /* End of file Manage_permissions.php */
 /* Location: ./application/controllers/admin/Manage_permissions.php */

@@ -4,8 +4,12 @@
  *
  * Extends CI_Session with the following functionality:
  * Maintain all flashdata making them available to next request
+ *
+ * @package A3M
+ * @subpackage Drivers
  */ 
-class MY_Session extends CI_Session {
+class MY_Session extends CI_Session
+{
 	
 	/**
 	 * Constructor

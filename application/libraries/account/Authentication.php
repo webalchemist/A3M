@@ -240,7 +240,5 @@ class Authentication
 		}
 	}
 }
-
-
 /* End of file Authentication.php */
 /* Location: ./application/account/libraries/Authentication.php */

@@ -16,6 +16,7 @@ class Gravatar
      * @var string
      */
     private $base_url = 'http://www.gravatar.com/';
+    
     /**
      * Secured URL to Gravatar
      * @var string

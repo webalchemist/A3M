@@ -1,6 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Ref_country_model extends CI_Model {
+/**
+ * Ref_country
+ *
+ * Model for the Ref_country table.
+ * Refferencing country information.
+ *
+ * @package A3M
+ * @subpackage Models
+ */
+class Ref_country_model extends CI_Model
+{
 
 	/**
 	 * Get ref country

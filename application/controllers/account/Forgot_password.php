@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Forgot_password Controller
+/**
+ * Forgot password page
+ * 
+ * @package A3M
+ * @subpackage Controllers
  */
 class Forgot_password extends CI_Controller {
 
@@ -129,7 +132,12 @@ class Forgot_password extends CI_Controller {
 	}
 	
 	/**
+	 * Will check for username or e-mail
+	 *
+	 * Will check if the username or e-mail is available and return boolean value.
+	 * This is for AJAX requests.
 	 * 
+	 * @access public
 	 * @param object $str Possible username or e-mail to be checked
 	 * @return boolean
 	 */
@@ -157,11 +165,8 @@ class Forgot_password extends CI_Controller {
 				$this->form_validation->set_message('check_username_or_email', 'Invalid username format');
 				return FALSE;
 			}
-
 		}
-
 	}
-
 }
 
 /* End of file Forgot_password.php */

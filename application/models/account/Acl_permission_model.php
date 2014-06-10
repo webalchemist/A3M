@@ -1,6 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Acl_permission_model extends CI_Model {
+/**
+ * Acl_permissions_model
+ *
+ * Model for the Acl_permission table.
+ * Holds permissions information.
+ *
+ * @package A3M
+ * @subpackage Models
+ */
+class Acl_permission_model extends CI_Model
+{
 
   /**
    * Get all permissions, used for Admin Panel

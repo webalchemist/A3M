@@ -1,6 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Acl_role_model extends CI_Model {
+/**
+ * Acl_role_model
+ *
+ * Model for the Acl_role table.
+ * Holds role information.
+ *
+ * @package A3M
+ * @subpackage Models
+ */
+class Acl_role_model extends CI_Model
+{
 
   /**
    * Get all roles

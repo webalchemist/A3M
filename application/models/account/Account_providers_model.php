@@ -1,8 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Account_providers_model extends CI_Model {
-    
-    /*
+/**
+ * Account_providers_model
+ *
+ * Model for the Social Network providers connections.
+ *
+ * @package A3M
+ * @subpackage Models
+ */
+class Account_providers_model extends CI_Model
+{
+    /**
      * Gets all of user's connection
      * @param int $user_id
      * @return array
@@ -15,7 +23,7 @@ class Account_providers_model extends CI_Model {
     
     // --------------------------------------------------------------------
     
-    /*
+    /**
      * Gets record by provider uid
      * @param string $provider Provider's name
      * @param string $id ID for the user used by the provider
@@ -28,27 +36,41 @@ class Account_providers_model extends CI_Model {
     
     // --------------------------------------------------------------------
     
-    /*
+    /**
      * Insert a new record into DB
+     * @param int $user_id User id
+     * @param string $provider Provider's name
+     * @param string $provider_uid User's id from the provider
+     * @param string $email User's e-mail provided by the provider
+     * @param string $display_name Display/Nickaname from the provider
+     * @param string $first_name
+     * @param string $last_name
+     * @param string $profile_url Link to user's profile with the provider
+     * @param string $website_url
+     * @param string $photo_url
+     * @return int Insert id
      */
     public function insert($user_id, $provider, $provider_uid, $email, $display_name, $first_name, $last_name, $profile_url, $website_url, $photo_url)
     {
         $this->load->helper('date');
         $this->db->insert('a3m_providers', array('user_id' => $user_id, 'provider' => $provider, 'provider_uid' => $provider_uid, 'email' => $email, 'display_name' => $display_name, 'first_name' => $first_name, 'last_name' => $last_name, 'profile_url' => $profile_url, 'website_url' => $website_url, 'photo_url' => $photo_url, 'created_at' => mdate('%Y-%m-%d %H:%i:%s', now()) ));
+        return $this->db->insert_id();
     }
     
     // --------------------------------------------------------------------
     
-    /*
+    /**
      * Delete given record from table
      * @param int $user_id
      * @param string $provider Provider name
-     * @param string $id Provider id
+     * @param string $uid User's uid from the provider
+     * @return boolean Returns boolean if the delete was successful or not.
      */
     public function delete($user_id, $provider, $uid)
     {
         $this->db->where(array('user_id' => $user_id, 'provider' => $provider, 'provider_uid' => $uid));
         $this->db->delete('a3m_providers');
+        return $this->db->affected_rows();
     }
 }
 /* End of file Account_providers_model.php */

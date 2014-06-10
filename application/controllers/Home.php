@@ -1,7 +1,19 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
-
+/**
+ * Static pages
+ *
+ * This controller is for the home page and any other top level static pages.
+ * 
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Home extends CI_Controller
+{
+	
+	/**
+	 * Constructor
+	 */
 	function __construct()
 	{
 		parent::__construct();
@@ -11,7 +23,12 @@ class Home extends CI_Controller {
 		$this->load->library(array('account/authentication', 'account/authorization'));
 		$this->load->model('account/Account_model');
 	}
-
+	
+	/**
+	 * Home page
+	 *
+	 * This is the controller for the home page
+	 */
 	function index()
 	{
 		maintain_ssl();

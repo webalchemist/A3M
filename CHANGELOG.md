@@ -14,6 +14,7 @@
 * Change: Changed how views are called. Now using a template into which all views are inserted.
 * Change: Profile settings was merged into Account settings to reduce user confusion
 * Remove: Currency table and reference to country by IP table and functionality
+* Better support for DocBlock documentation
 
 ## v1.0.3
 * Update: Gravatar library

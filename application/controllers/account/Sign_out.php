@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Sign_out Controller
+/**
+ * Sign out
+ *
+ * @package A3M
+ * @subpackage Controllers
  */
 class Sign_out extends CI_Controller {
 

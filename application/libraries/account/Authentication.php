@@ -1,7 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Authentication {
-
+/**
+ * A3M Authentication library
+ *
+ * @package A3M
+ * @subpackage Libraries
+ */
+class Authentication
+{
+	/**
+	 * The CI object
+	 * @var object
+	 */
 	var $CI;
 
 	/**
@@ -28,6 +38,8 @@ class Authentication {
 	// --------------------------------------------------------------------
 	
 	/**
+	 * Page Initialization
+	 *
 	 * The initial steps that are taken at the beginning of each page
 	 * @param boolean $login_required Is this page accessible only when logged in?
 	 * @param string $page Page location to take location into account

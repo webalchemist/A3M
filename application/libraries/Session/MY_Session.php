@@ -7,6 +7,9 @@
  */ 
 class MY_Session extends CI_Session {
 	
+	/**
+	 * Constructor
+	 */
 	function __construct()
 	{
 	    parent::__construct();
@@ -16,7 +19,7 @@ class MY_Session extends CI_Session {
 	 * Keeps existing flashdata available to next request.
 	 *
 	 * @access    public
-	 * @param    string
+	 * @param    string $key
 	 * @return    void
 	 */
 	public function keep_flashdata($key = '')
@@ -46,7 +49,5 @@ class MY_Session extends CI_Session {
 	// ------------------------------------------------------------------------
 
 }
-
-
 /* End of file MY_Session.php */
 /* Location: ./application/libraries/Session/MY_Session.php */

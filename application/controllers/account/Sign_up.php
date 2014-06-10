@@ -1,8 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Sign_up Controller
+/**
+ * Sign up
+ *
+ * @package A3M
+ * @subpackage Controllers
  */
-class Sign_up extends CI_Controller {
+class Sign_up extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -158,7 +162,7 @@ class Sign_up extends CI_Controller {
 	 * Check if a username exist
 	 *
 	 * @access public
-	 * @param string
+	 * @param string $username
 	 * @return bool
 	 */
 	function username_check($username)
@@ -181,7 +185,7 @@ class Sign_up extends CI_Controller {
 	 * Check if an email exist
 	 *
 	 * @access public
-	 * @param string
+	 * @param string $email
 	 * @return bool
 	 */
 	function email_check($email)

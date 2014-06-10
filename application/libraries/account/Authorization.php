@@ -1,7 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Authorization {
-
+/**
+ * A3M Authorization library
+ *
+ * @package A3M
+ * @subpackage Libraries
+ */
+class Authorization
+{
+  /**
+   * The CI object
+   * @var object
+   */
   var $CI;
 
   /**
@@ -30,6 +40,7 @@ class Authorization {
    *
    * @access public
    * @param array/string $permission_keys
+   * @param boolean $require_all
    * @return bool
    */
   function is_permitted($permission_keys, $require_all = FALSE)

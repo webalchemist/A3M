@@ -1,8 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Manage_users Controller
+/**
+ * Manage users
+ * @package A3Ms
  */
-class Manage_users extends CI_Controller {
+class Manage_users extends CI_Controller
+{
 
   /**
    * Constructor
@@ -20,7 +22,7 @@ class Manage_users extends CI_Controller {
   }
 
   /**
-   * Manage Users
+   * Overview of all users
    */
   function index()
   {
@@ -90,8 +92,14 @@ class Manage_users extends CI_Controller {
 
   /**
    * Create/Update Users
+   *
+   * If user ID is passed in, it will allow to edit the given user.
+   * If no user ID is passed then it will allow the creation of a new user.
+   * When you create a new user an e-mail is going to be send out to that user with their login information.
+   *
+   * @param int $id User id
    */
-  function save($id=null)
+  function save($id = NULL)
   {
     // Keep track if this is a new user
     $is_new = empty($id);
@@ -185,7 +193,6 @@ class Manage_users extends CI_Controller {
       }
       else
       {
-
         // Create a new user
         if( empty($id) )
         {
@@ -204,10 +211,13 @@ class Manage_users extends CI_Controller {
             $this->email->subject(sprintf(lang('users_creation_email_subject'), lang('website_title')));
             $this->email->message($this->load->view('admin/manage_users_info_email', array('username' => $this->input->post('users_username', TRUE), 'password' => $this->input->post('users_new_password', TRUE)), TRUE));
             
-            if( ! $this->email->send())
+            if(ENVIRONMENT == 'development')
             {
-              //there was an error sending the e-mail
-              print_debugger();
+                echo($this->email->print_debugger());
+            }
+            else
+            {
+                show_error('There was an error sending the e-mail. Please contact the webmaster.');
             }
           }
         }
@@ -293,7 +303,7 @@ class Manage_users extends CI_Controller {
    * Check if a username exist
    *
    * @access public
-   * @param string
+   * @param string $username
    * @return bool
    */
   function username_check($username)
@@ -305,7 +315,7 @@ class Manage_users extends CI_Controller {
    * Check if an email exist
    *
    * @access public
-   * @param string
+   * @param string $email
    * @return bool
    */
   function email_check($email)

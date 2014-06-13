@@ -84,9 +84,9 @@ class Authentication
 				if($role != NULL)
 				{
 					//check that the given role is allowed
-					$this->CI->load->library('account/Authentication');
+					$this->CI->load->library('account/Authorization');
 					
-					if(!$this->CI->Authentication->is_role($role, $require_all))
+					if(!$this->CI->authorization->is_role($role, $require_all))
 					{
 						redirect(base_url());
 					}					
@@ -96,8 +96,9 @@ class Authentication
 				if($permission != NULL)
 				{
 					//check if the given permission is allowed
-					$this->CI->load->library('account/Authentication');
-					if(!$this->Authorization->is_permitted($permission, $require_all))
+					$this->CI->load->library('account/Authorization');
+					
+					if(!$this->CI->authorization->is_permitted($permission, $require_all))
 					{
 						redirect(base_url());
 					}

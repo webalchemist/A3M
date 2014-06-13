@@ -1,4 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Account Settings
  * @package A3M
@@ -28,17 +36,7 @@ class Settings extends CI_Controller
 	 */
 	function index($action = NULL)
 	{
-		// Enable SSL?
-		maintain_ssl($this->config->item("ssl_enabled"));
-
-		// Redirect unauthenticated users to signin page
-		if ( ! $this->authentication->is_signed_in())
-		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'account/settings'));
-		}
-
-		// Retrieve sign in user
-		$data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
+		$data = $this->authentication->initialize(TRUE, 'account/settings');
 		$data['account_details'] = $this->Account_details_model->get_by_account_id($this->session->userdata('account_id'));
 
 		// Retrieve countries, languages and timezones

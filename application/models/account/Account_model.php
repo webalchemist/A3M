@@ -1,4 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Account_model
@@ -80,7 +88,9 @@ class Account_model extends CI_Model
 	 */
 	function get_by_username_email($username_email)
 	{
-		return $this->db->where('username', $username_email)->or_where('email', $username_email)->get($this->db->dbprefix . 'a3m_account')->row();
+		$this->db->where('username', $username_email);
+		$this->db->or_where('email', $username_email);
+		return $this->db->get($this->db->dbprefix . 'a3m_account')->row();
 	}
 
 	// --------------------------------------------------------------------

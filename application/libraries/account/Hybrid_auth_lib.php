@@ -1,8 +1,10 @@
 <?php
 /**
- * Hybrid Authentication library
- * @package A3M
- * @subpackage Libraries
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -10,6 +12,8 @@ require APPPATH.'/third_party/Hybrid/Auth.php';
 
 /**
  * Allows to use of Hybrid Authentication
+ * @package A3M
+ * @subpackage Libraries
  */
 class Hybrid_auth_lib extends Hybrid_Auth
 {

@@ -1,4 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Acl_permissions_model
@@ -29,6 +37,7 @@ class Acl_permission_model extends CI_Model
    * Get a single permission by id
    *
    * @access public
+   * @param int $id
    * @return object permission details
    */
   function get_by_id($id)

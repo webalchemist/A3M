@@ -1,4 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Manage users
  * @package A3M
@@ -27,23 +35,7 @@ class Manage_users extends CI_Controller
    */
   function index()
   {
-    // Enable SSL?
-    maintain_ssl($this->config->item("ssl_enabled"));
-
-    // Redirect unauthenticated users to signin page
-    if ( ! $this->authentication->is_signed_in())
-    {
-      redirect('account/sign_in/?continue='.urlencode(base_url().'admin/manage_users'));
-    }
-
-    // Redirect unauthorized users to account profile page
-    if ( ! $this->authorization->is_permitted('retrieve_users'))
-    {
-      redirect('account/profile');
-    }
-
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
+    $data = $this->authentication->initialize(TRUE, 'admin/manage_users', NULL, 'retrieve_users');
 
     // Get all user information
     $all_accounts = $this->Account_model->get();
@@ -105,14 +97,7 @@ class Manage_users extends CI_Controller
     // Keep track if this is a new user
     $is_new = empty($id);
 
-    // Enable SSL?
-    maintain_ssl($this->config->item("ssl_enabled"));
-
-    // Redirect unauthenticated users to signin page
-    if ( ! $this->authentication->is_signed_in())
-    {
-      redirect('account/sign_in/?continue='.urlencode(base_url().'admin/manage_users'));
-    }
+    $data = $this->authentication->initialize(TRUE, 'admin/manage_users');
 
     // Check if they are allowed to Update Users
     if ( ! $this->authorization->is_permitted('update_users') && ! empty($id) )
@@ -125,9 +110,6 @@ class Manage_users extends CI_Controller
     {
       redirect('admin/manage_users');
     }
-
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
 
     // Get all the roles
     $data['roles'] = $this->Acl_role_model->get();

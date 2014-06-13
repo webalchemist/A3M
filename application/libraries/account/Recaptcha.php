@@ -1,13 +1,14 @@
 <?php
 /**
  * Recaptcha library
- * @package A3M
- * @subpackage Libraries
+ * 
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Recaptcha library
+ * @package A3M
+ * @subpackage Libraries
  */
 class Recaptcha
 {

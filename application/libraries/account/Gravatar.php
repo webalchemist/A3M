@@ -1,14 +1,18 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); // Remove line to use class outside of codeigniter
+<?php
 /**
-* Gravatar library for use with codeigniter
-* 
-* @author Ryan Marshall <ryan@irealms.co.uk>
-* @link https://github.com/rsmarshall/Codeigniter-Gravatar
-* @package CodeIgniter
-* @subpackage Gravatar
-*
-*/
-
+ * Gravatar library for use with codeigniter
+ *
+ * @author Ryan Marshall <ryan@irealms.co.uk>
+ * @link https://github.com/rsmarshall/Codeigniter-Gravatar
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed'); // Remove line to use class outside of codeigniter
+/**
+ * Gravatar library for use with codeigniter
+ * 
+ * @package CodeIgniter
+ * @subpackage Gravatar
+ *
+ */
 class Gravatar
 {
     /**

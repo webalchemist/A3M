@@ -146,26 +146,26 @@ class Authorization
     
     $this->CI->load->model('account/Acl_role_model');
     
-    $account_permissions = $this->CI->Acl_role_model->get_by_account_id($account_id);
-
+    $account_roles = $this->CI->Acl_role_model->get_by_account_id($account_id);
+    
     // Loop through and check if the account 
     // has any of the permission keys supplied
-    if (isset($permission_keys))
+    if (isset($roles))
     {
-      foreach ($account_permissions as $perm) 
+      foreach ($account_roles as $perm) 
       {
         // Array of permission keys
-        if (is_array($$roles))
+        if (is_array($roles))
         {
-          foreach($$roles as $role) 
+          foreach($roles as $role) 
           {
             // Return if only a single one is required.
-            if(strtolower($perm->key) == strtolower($role) && ! $require_all ) 
+            if(strtolower($perm->name) == strtolower($role) && ! $require_all ) 
             {
               return TRUE;
             } 
             // Only takes one bad apple
-            elseif(strtolower($perm->key) != strtolower($role) && $require_all)
+            elseif(strtolower($perm->name) != strtolower($role) && $require_all)
             {
               return FALSE;
             }
@@ -175,12 +175,12 @@ class Authorization
         else
         {
           // Return if only a single one is required.
-          if (strtolower($perm->key) == strtolower($roles) && ! $require_all ) 
+          if (strtolower($perm->name) == strtolower($roles) && ! $require_all ) 
           {
             return TRUE;
           }
           // Only takes one bad apple
-          elseif (strtolower($perm->key) != strtolower($roles) && $require_all) 
+          elseif (strtolower($perm->name) != strtolower($roles) && $require_all) 
           {
             return FALSE;
           }

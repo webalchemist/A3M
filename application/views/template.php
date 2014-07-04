@@ -12,7 +12,8 @@
     
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico"/>
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="resource/js/jquery.min.js"><\/script>')</script>
     <link type="text/css" rel="stylesheet" href="<?php echo base_url().RES_DIR; ?>/bootstrap/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url().RES_DIR; ?>/css/style.css"/>
     <script src="<?php echo base_url().RES_DIR; ?>/bootstrap/js/bootstrap.min.js"></script>
@@ -25,12 +26,14 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <a class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <?php echo anchor('', lang('website_title'), 'class="navbar-brand"'); ?>
+            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="divider-vertical"></li>
@@ -48,7 +51,6 @@
                         <ul class="dropdown-menu">
                                 <?php if ($this->authentication->is_signed_in()) : ?>
                             <li class="dropdown-header"><?php echo lang('website_account_info'); ?></li>
-                                <li><?php echo anchor('account/profile', lang('website_profile')); ?></li>
                                 <li><?php echo anchor('account/settings', lang('website_account')); ?></li>
                                 <?php if ($account->password) : ?>
                                         <li><?php echo anchor('account/password', lang('website_password')); ?></li>

@@ -1,5 +1,7 @@
-<h2><?php echo anchor(current_url(), lang('reset_password_page_name')); ?></h2>
+<div class="page-header">
+    <h1><?php echo lang('reset_password_page_name'); ?></h1>
+</div>
 
-<p><?php echo lang('reset_password_unsuccessful'); ?></p>
+<div class="alert alert-danger"><?php echo lang('reset_password_unsuccessful'); ?></div>
 
-<p><?php echo anchor('account/forgot_password', lang('reset_password_resend'), array('class' => 'button')); ?></p>
+<p><?php echo anchor('user/forgot_password', lang('reset_password_resend'), array('class' => 'btn btn-default')); ?></p>

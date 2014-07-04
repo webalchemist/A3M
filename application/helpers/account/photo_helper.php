@@ -1,9 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+ * Helper for managing and getting user avatars
+ * @package A3M
+ * @subpackage Helpers
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Shows users photo
  * @param string $picture Description
- * @param Array $param Array with parameters to be included in the generated img tag (height, width, id, align, check, nocache, title, class)
+ * @param Array $param Array with parameters to be included in the generated img tag (height, width, id, check, nocache, title, class)
  * @return string
  */
 function showPhoto($picture = NULL, $param = NULL)
@@ -13,10 +19,10 @@ function showPhoto($picture = NULL, $param = NULL)
 	$height = (isset($param['height'])) ? $param['height'] : 100;
 	$width = (isset($param['width'])) ? $param['width'] : 100;
 	$id = (isset($param['id'])) ? $param['id'] : FALSE;
-	$align = (isset($param['align'])) ? $param['align'] : "absmiddle";
 	$check = (isset($param['check'])) ? $param['check'] : FALSE;
 	$nocache = (isset($param['nocache'])) ? $param['nocache'] : FALSE; // TRUE = disable caching, add time string to image url
 	$title = (isset($param['title'])) ? $param['title'] : "User's Photo";
+	$class = (isset($param['class'])) ? $param['class'] : 'img img-thumbnail';
 
 	if (isset($picture) && strlen(trim($picture)) > 0)
 	{
@@ -77,7 +83,10 @@ function showPhoto($picture = NULL, $param = NULL)
 
 }
 
-/* Used for checking if a particular file exists (locally). Use sparingly as it is time consuming!
+/**
+ * Check if file exists
+ * 
+ * Used for checking if a particular file exists (locally). Use sparingly as it is time consuming!
  *
  */
 function fileExists($path)

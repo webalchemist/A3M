@@ -1,8 +1,20 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Sign_up Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Sign_up extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Sign up
+ *
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Sign_up extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -158,7 +170,7 @@ class Sign_up extends CI_Controller {
 	 * Check if a username exist
 	 *
 	 * @access public
-	 * @param string
+	 * @param string $username
 	 * @return bool
 	 */
 	function username_check($username)
@@ -181,7 +193,7 @@ class Sign_up extends CI_Controller {
 	 * Check if an email exist
 	 *
 	 * @access public
-	 * @param string
+	 * @param string $email
 	 * @return bool
 	 */
 	function email_check($email)

@@ -1,8 +1,20 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Connect_openid Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Connect_openid extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Page to put in adress to openid provider
+ * 
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Connect_openid extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -19,6 +31,9 @@ class Connect_openid extends CI_Controller {
 		$this->load->language(array('general', 'account/sign_in', 'account/account_linked', 'account/connect_third_party'));
 	}
 
+	/**
+	 * Page to specify OpenID provider
+	 */
 	function index()
 	{
 		// Enable SSL?

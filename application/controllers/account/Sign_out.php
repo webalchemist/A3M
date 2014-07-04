@@ -1,8 +1,20 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Sign_out Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Sign_out extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Sign out
+ *
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Sign_out extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -43,7 +55,5 @@ class Sign_out extends CI_Controller {
 	}
 
 }
-
-
 /* End of file Sign_out.php */
 /* Location: ./application/controllers/account/Sign_out.php */

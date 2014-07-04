@@ -1,6 +1,16 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Connect_end Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * End point for social providers return data
+ * @package A3M
+ * @subpackage Controllers
  */
 class Connect_end extends CI_Controller
 {
@@ -12,6 +22,9 @@ class Connect_end extends CI_Controller
         parent::__construct();
     }
     
+    /**
+     * Endpoint for Hybrid Auth connection
+     */
     public function Index()
     {
         log_message('debug', 'controllers.HAuth.endpoint called.');
@@ -28,8 +41,7 @@ class Connect_end extends CI_Controller
         
         log_message('debug', 'controllers.HAuth.endpoint: loading the original HybridAuth endpoint script.');
 	
-	//require_once APPPATH.'/helper/account/Hybrid/index.php';
-	/*!
+	/**
 	* HybridAuth
 	* http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
 	* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 

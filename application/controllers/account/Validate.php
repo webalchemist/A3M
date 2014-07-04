@@ -1,8 +1,23 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Validate Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Validate extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * E-mail validation
+ *
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Validate extends CI_Controller
+{
+    /**
+     * Constructor
+     */
     function __construct()
     {
 	parent::__construct();
@@ -20,18 +35,12 @@ class Validate extends CI_Controller {
      */
     function Index()
     {
-        // Enable SSL?
-	maintain_ssl($this->config->item("ssl_enabled"));
+	$data = $this->authentication->initialize(FALSE);
         
         // Redirect signed in users to homepage
         if($this->config->item('account_email_validation_required'))
 	{
 	    if ($this->authentication->is_signed_in()) redirect('');
-	}
-	
-	if($this->authentication->is_signed_in())
-	{
-	    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
 	}
         
         //redirect invalid entries to homepage
@@ -57,10 +66,11 @@ class Validate extends CI_Controller {
     
     /**
      * Send validation e-mail again
-     * @param string $user username or e-mail
+     * @param string $username_email username or e-mail
      */
     public function resend($username_email)
     {
+	$data = $this->authentication->initialize(FALSE);
 	if($this->config->item('account_email_validate'))
 	{
 	    //first find user id
@@ -92,7 +102,14 @@ class Validate extends CI_Controller {
 	    }
 	    else
 	    {
-		echo($this->email->print_debugger());
+		if(ENVIRONMENT == 'development')
+		{
+		    echo($this->email->print_debugger());
+		}
+		else
+		{
+		    show_error('There was an error sending the e-mail. Please contact the webmaster.');
+		}
 	    }
 	}
 	else

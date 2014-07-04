@@ -1,8 +1,19 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Manage_users Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Manage_users extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Manage users
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Manage_users extends CI_Controller
+{
 
   /**
    * Constructor
@@ -20,27 +31,11 @@ class Manage_users extends CI_Controller {
   }
 
   /**
-   * Manage Users
+   * Overview of all users
    */
   function index()
   {
-    // Enable SSL?
-    maintain_ssl($this->config->item("ssl_enabled"));
-
-    // Redirect unauthenticated users to signin page
-    if ( ! $this->authentication->is_signed_in())
-    {
-      redirect('account/sign_in/?continue='.urlencode(base_url().'admin/manage_users'));
-    }
-
-    // Redirect unauthorized users to account profile page
-    if ( ! $this->authorization->is_permitted('retrieve_users'))
-    {
-      redirect('account/profile');
-    }
-
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
+    $data = $this->authentication->initialize(TRUE, 'admin/manage_users', NULL, 'retrieve_users');
 
     // Get all user information
     $all_accounts = $this->Account_model->get();
@@ -90,20 +85,19 @@ class Manage_users extends CI_Controller {
 
   /**
    * Create/Update Users
+   *
+   * If user ID is passed in, it will allow to edit the given user.
+   * If no user ID is passed then it will allow the creation of a new user.
+   * When you create a new user an e-mail is going to be send out to that user with their login information.
+   *
+   * @param int $id User id
    */
-  function save($id=null)
+  function save($id = NULL)
   {
     // Keep track if this is a new user
     $is_new = empty($id);
 
-    // Enable SSL?
-    maintain_ssl($this->config->item("ssl_enabled"));
-
-    // Redirect unauthenticated users to signin page
-    if ( ! $this->authentication->is_signed_in())
-    {
-      redirect('account/sign_in/?continue='.urlencode(base_url().'admin/manage_users'));
-    }
+    $data = $this->authentication->initialize(TRUE, 'admin/manage_users');
 
     // Check if they are allowed to Update Users
     if ( ! $this->authorization->is_permitted('update_users') && ! empty($id) )
@@ -116,9 +110,6 @@ class Manage_users extends CI_Controller {
     {
       redirect('admin/manage_users');
     }
-
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
 
     // Get all the roles
     $data['roles'] = $this->Acl_role_model->get();
@@ -185,7 +176,6 @@ class Manage_users extends CI_Controller {
       }
       else
       {
-
         // Create a new user
         if( empty($id) )
         {
@@ -204,10 +194,13 @@ class Manage_users extends CI_Controller {
             $this->email->subject(sprintf(lang('users_creation_email_subject'), lang('website_title')));
             $this->email->message($this->load->view('admin/manage_users_info_email', array('username' => $this->input->post('users_username', TRUE), 'password' => $this->input->post('users_new_password', TRUE)), TRUE));
             
-            if( ! $this->email->send())
+            if(ENVIRONMENT == 'development')
             {
-              //there was an error sending the e-mail
-              print_debugger();
+                echo($this->email->print_debugger());
+            }
+            else
+            {
+                show_error('There was an error sending the e-mail. Please contact the webmaster.');
             }
           }
         }
@@ -280,11 +273,11 @@ class Manage_users extends CI_Controller {
    * Filter the user list by permission or role.
    *
    * @access public
-   * @param string $type (permission, role)
-   * @param int $id (permission_id, role_id)
+   * @param string $type permission, role
+   * @param int $id permission_id, role_id
    * @return void
    */
-  function filter($type=null,$id=null)
+  function filter($type = NULL, $id = NULL)
   {
     $this->index();
   }
@@ -293,7 +286,7 @@ class Manage_users extends CI_Controller {
    * Check if a username exist
    *
    * @access public
-   * @param string
+   * @param string $username
    * @return bool
    */
   function username_check($username)
@@ -305,7 +298,7 @@ class Manage_users extends CI_Controller {
    * Check if an email exist
    *
    * @access public
-   * @param string
+   * @param string $email
    * @return bool
    */
   function email_check($email)

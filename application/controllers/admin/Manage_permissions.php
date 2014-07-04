@@ -1,8 +1,19 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Manage_permissions Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Manage_permissions extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Manage user permissions
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Manage_permissions extends CI_Controller
+{
 
   /**
    * Constructor
@@ -20,27 +31,13 @@ class Manage_permissions extends CI_Controller {
   }
 
   /**
-   * Manage Permissions
+   * Overview
+   *
+   * Overview of all permissions and options
    */
   function index()
   {
-    // Enable SSL?
-    maintain_ssl($this->config->item("ssl_enabled"));
-
-    // Redirect unauthenticated users to signin page
-    if ( ! $this->authentication->is_signed_in())
-    {
-      redirect('account/sign_in/?continue='.urlencode(base_url().'admin/manage_permissions'));
-    }
-
-    // Redirect unauthorized users to account profile page
-    if ( ! $this->authorization->is_permitted('retrieve_permissions'))
-    {
-      redirect('account/profile');
-    }
-
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
+    $data = $this->authentication->initialize(TRUE, 'admin/manage_permissions', NULL, 'retrieve_permissions');
 
     // Get all permossions, roles, and role_permissions
     $roles = $this->Acl_role_model->get();
@@ -84,30 +81,31 @@ class Manage_permissions extends CI_Controller {
 
 
   /**
-   * Manage Permissions
+   * Create/edit permissions
+   *
+   * If permission ID is defined it will edit it.
+   * If ID is null it will create a new permission.
+   *
+   * @param int $id ID of a specific permission
    */
-  function save($id=null)
+  function save($id = NULL)
   {
     // Keep track if this is a new permission
     $is_new = empty($id);
 
-    // Enable SSL?
-    maintain_ssl($this->config->item("ssl_enabled"));
+    $data = $this->authentication->initialize(TRUE, 'admin/manage_permissions');
 
-    // Redirect unauthenticated users to signin page
-    if ( ! $this->authentication->is_signed_in())
+    // Check if they are allowed to Update Users
+    if ( ! $this->authorization->is_permitted('update_permissions') && ! empty($id) )
     {
-      redirect('account/sign_in/?continue='.urlencode(base_url().'admin/manage_permissions'));
+      redirect('admin/manage_permissions');
     }
 
-    // Redirect unauthorized users to account profile page
-    if ( ! $this->authorization->is_permitted('retrieve_permissions'))
+    // Check if they are allowed to Create Users
+    if ( ! $this->authorization->is_permitted('create_permissions') && empty($id) )
     {
-      redirect('account/profile');
+      redirect('admin/manage_permissions');
     }
-
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
 
     // Set action type (create or update permission)
     $data['action'] = 'create';
@@ -207,14 +205,13 @@ class Manage_permissions extends CI_Controller {
    * Check if the permission name exists
    *
    * @access public
-   * @param string
+   * @param string $permission_name
    * @return bool
    */
-  function name_check($permission_name)
+  public function name_check($permission_name)
   {
     return $this->Acl_permission_model->get_by_name($permission_name) ? TRUE : FALSE;
   }
 }
-
 /* End of file Manage_permissions.php */
 /* Location: ./application/controllers/admin/Manage_permissions.php */

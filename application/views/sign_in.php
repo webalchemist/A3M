@@ -43,13 +43,11 @@
 	    </div>
 	</div>
 
-	<div class="form-group">
-	    <div class="col-lg-10 col-lg-offset-2">
-		<label class="checkbox">
+	<div class="checkbox">
+		<label>
 			<?php echo form_checkbox(array('name' => 'sign_in_remember', 'id' => 'sign_in_remember', 'value' => 'checked', 'checked' => $this->input->post('sign_in_remember'))); ?>
 			<?php echo lang('sign_in_remember_me'); ?>
 		</label>
-	    </div>
 	</div>
 
 	<div>

@@ -1,6 +1,16 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Reset_password Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Reset password
+ * @package A3M
+ * @subpackage Controllers
  */
 class Reset_password extends CI_Controller {
 
@@ -21,8 +31,10 @@ class Reset_password extends CI_Controller {
 
 	/**
 	 * Reset password
+	 *
+	 * Password reset landing after clicking on a link in the 
 	 */
-	function index($id=null)
+	function index()
 	{
 		// Enable SSL?
 		maintain_ssl($this->config->item("ssl_enabled"));
@@ -50,8 +62,8 @@ class Reset_password extends CI_Controller {
 			return;
 		}
 
-		// Get account by email
-		if ($account = $this->Account_model->get_by_id($this->input->get('id')))
+		// Get account by id
+		if ($account = $this->Account_model->get_by_id($this->input->get('id', TRUE)))
 		{
 			// Check if reset password has expired
 			if (now() < (strtotime($account->resetsenton) + $this->config->item("password_reset_expiration")))

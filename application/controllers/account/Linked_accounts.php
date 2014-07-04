@@ -1,9 +1,20 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Account_linked Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Linked_accounts extends CI_Controller {
-
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Linked Accounts
+ *
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Linked_accounts extends CI_Controller
+{
 	/**
 	 * Constructor
 	 */
@@ -20,21 +31,13 @@ class Linked_accounts extends CI_Controller {
 	}
 
 	/**
-	 * Linked accounts
+	 * Linked accounts page
+	 *
+	 * Displays all the social media accounts that have been linked by the user to this page and offers an option to add or remove connections.
 	 */
 	function index()
 	{
-		// Enable SSL?
-		maintain_ssl($this->config->item("ssl_enabled"));
-
-		// Redirect unauthenticated users to signin page
-		if ( ! $this->authentication->is_signed_in())
-		{
-			redirect('account/sign_in/?continue='.urlencode(base_url('account/linked_accounts')));
-		}
-
-		// Retrieve sign in user
-		$data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
+		$data = $this->authentication->initialize(TRUE, 'account/linked_accounts');
 		
 		//delete a linked account
 		if ($this->input->post('provider') && $this->input->post('uid'))
@@ -48,9 +51,6 @@ class Linked_accounts extends CI_Controller {
 		$data['content'] = $this->load->view('account/account_linked', $data, TRUE);
 		$this->load->view('template', $data);
 	}
-
 }
-
-
 /* End of file Connect_accounts.php */
 /* Location: ./application/controllers/account/Connect_accounts.php */

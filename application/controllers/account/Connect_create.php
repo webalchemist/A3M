@@ -1,8 +1,19 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Connect_create Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Connect_create extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Create connection between provider and our site
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Connect_create extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -20,7 +31,7 @@ class Connect_create extends CI_Controller {
 	}
 
 	/**
-	 * Complete facebook's authentication process
+	 * Creates a new entry in the providers table so that user is remembered
 	 *
 	 * @access public
 	 * @return void
@@ -88,7 +99,7 @@ class Connect_create extends CI_Controller {
 	 * Check if a username exist
 	 *
 	 * @access public
-	 * @param string
+	 * @param string $username
 	 * @return bool
 	 */
 	function username_check($username)
@@ -100,7 +111,7 @@ class Connect_create extends CI_Controller {
 	 * Check if an email exist
 	 *
 	 * @access public
-	 * @param string
+	 * @param string $email
 	 * @return bool
 	 */
 	function email_check($email)

@@ -1,8 +1,20 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Forgot_password Controller
+<?php
+/**
+ * A3M (Account Authentication & Authorization) is a CodeIgniter 3.x package.
+ * It gives you the CRUD to get working right away without too much fuss and tinkering!
+ * Designed for building webapps from scratch without all that tiresome login / logout / admin stuff thats always required.
+ *
+ * @link https://github.com/donjakobo/A3M GitHub repository
  */
-class Forgot_password extends CI_Controller {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Forgot password page
+ * 
+ * @package A3M
+ * @subpackage Controllers
+ */
+class Forgot_password extends CI_Controller
+{
 
 	/**
 	 * Constructor
@@ -129,7 +141,12 @@ class Forgot_password extends CI_Controller {
 	}
 	
 	/**
+	 * Will check for username or e-mail
+	 *
+	 * Will check if the username or e-mail is available and return boolean value.
+	 * This is for AJAX requests.
 	 * 
+	 * @access public
 	 * @param object $str Possible username or e-mail to be checked
 	 * @return boolean
 	 */
@@ -157,11 +174,8 @@ class Forgot_password extends CI_Controller {
 				$this->form_validation->set_message('check_username_or_email', 'Invalid username format');
 				return FALSE;
 			}
-
 		}
-
 	}
-
 }
 
 /* End of file Forgot_password.php */

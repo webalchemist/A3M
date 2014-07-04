@@ -35,18 +35,12 @@ class Validate extends CI_Controller
      */
     function Index()
     {
-        // Enable SSL?
-	maintain_ssl($this->config->item("ssl_enabled"));
+	$data = $this->authentication->initialize(FALSE);
         
         // Redirect signed in users to homepage
         if($this->config->item('account_email_validation_required'))
 	{
 	    if ($this->authentication->is_signed_in()) redirect('');
-	}
-	
-	if($this->authentication->is_signed_in())
-	{
-	    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
 	}
         
         //redirect invalid entries to homepage
@@ -76,6 +70,7 @@ class Validate extends CI_Controller
      */
     public function resend($username_email)
     {
+	$data = $this->authentication->initialize(FALSE);
 	if($this->config->item('account_email_validate'))
 	{
 	    //first find user id

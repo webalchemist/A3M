@@ -33,7 +33,7 @@ echo form_fieldset(); ?>
     <div class="col-lg-10">
 	<?php if (isset($account_details->picture) && strlen(trim($account_details->picture)) > 0) : ?>
 	<?php echo showPhoto($account_details->picture); ?> &nbsp;
-	<?php echo anchor('account/profile/index/delete', '<i class="glyphicon glyphicon-trash"></i> '.lang('profile_delete_picture'), 'class="btn btn-default"'); ?>
+	<?php echo anchor('account/settings/index/delete', '<i class="glyphicon glyphicon-trash"></i> '.lang('profile_delete_picture'), 'class="btn btn-default"'); ?>
 	<?php else : ?>
 		
 	<div class="accountPicSelect clearfix">

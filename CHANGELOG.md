@@ -10,8 +10,9 @@
 * New feature: Initialize function in authentication library
 * New feature: Authorization library is_role() now accepts arrays
 * New feature: Added support for DocBlock documentation generation
-* Update: Update to jQuery 2.1.0
-* Update: Updated Twitter Bootstrap to 3.1.1
+* New feature: Support for DocBlock documentation
+* Update: Update to jQuery 2.1.1
+* Update: Updated Twitter Bootstrap to 3.2.0
 * Update: #70 Updated to Twitter Bootstrap 3.0.3
 * Update: #47 Updated to CodeIgniter 3.
 * Update: Update of authorization library so that are compared roles and permissions are lower string before being compared.
@@ -20,7 +21,6 @@
 * Change: Changed how views are called. Now using a template into which all views are inserted.
 * Change: Profile settings was merged into Account settings to reduce user confusion
 * Remove: Currency table and reference to country by IP table and functionality
-* Better support for DocBlock documentation
 
 ## v1.0.3
 * Update: Gravatar library

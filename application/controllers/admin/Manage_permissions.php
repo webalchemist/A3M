@@ -107,9 +107,6 @@ class Manage_permissions extends CI_Controller
       redirect('admin/manage_permissions');
     }
 
-    // Retrieve sign in user
-    $data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
-
     // Set action type (create or update permission)
     $data['action'] = 'create';
 

@@ -6,7 +6,7 @@
  *
  * @link https://github.com/donjakobo/A3M GitHub repository
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Static pages
@@ -39,12 +39,7 @@ class Home extends CI_Controller
 	 */
 	function index()
 	{
-		maintain_ssl();
-		
-		if ($this->authentication->is_signed_in())
-		{
-			$data['account'] = $this->Account_model->get_by_id($this->session->userdata('account_id'));
-		}
+		$data = $this->authentication->initialize(FALSE);
 		
 		$data['content'] = $this->load->view('home', isset($data) ? $data : NULL, TRUE);
 		$this->load->view('template', $data);

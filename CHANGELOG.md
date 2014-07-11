@@ -23,6 +23,7 @@
 * Remove: Currency table and reference to country by IP table and functionality
 
 ## v1.0.3
+* Fix: #98 Session Error after updating to CI 2.2.0
 * Update: Gravatar library
 
 ## v1.0.2

@@ -75,8 +75,8 @@
                                     <?php if (form_error('sign_up_terms') || isset($sign_up_terms_error)) : ?>
                                             <span class="alert alert-warning">
                                             <?php echo form_error('sign_up_terms');
-                                            if (isset($sign_up_terms_error)) : ?>
-                                                    <?php echo $sign_up_terms_error;
+                                            if (isset($sign_up_terms_error)) :
+                                                    echo $sign_up_terms_error;
                                             endif; ?>
                                             </span>
                                     <?php endif; ?>

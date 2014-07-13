@@ -181,7 +181,7 @@
                             validators:{
                                 choice:{
                                     min: 1,
-                                    message:'<?php echo lang('sign_up_js_validation_terms'); ?>'
+                                    message:"<?php //echo lang('sign_up_js_validation_terms'); ?> "
                                 }
                             }
                         }

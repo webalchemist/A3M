@@ -16,7 +16,7 @@ echo form_fieldset(); ?>
     <label class="control-label col-lg-2" for="profile_username"><?php echo lang('profile_username'); ?></label>
 
     <div class="col-lg-10">
-	<?php echo form_input(array('name' => 'profile_username', 'id' => 'profile_username', 'value' => set_value('profile_username') ? set_value('profile_username') : (isset($account->username) ? $account->username : ''), 'maxlength' => '24', 'class' => 'form-control'));
+	<?php echo form_input(array('name' => 'profile_username', 'id' => 'profile_username', 'value' => set_value('profile_username') ? set_value('profile_username') : (isset($account->username) ? $account->username : ''), 'maxlength' => $this->config->item('sign_up_username_max_length'), 'class' => 'form-control'));
 	if (form_error('profile_username') || isset($profile_username_error))
 	{
 	    echo '<span class="alert alert-danger">';

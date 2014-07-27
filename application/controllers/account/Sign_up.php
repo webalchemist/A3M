@@ -56,10 +56,10 @@ class Sign_up extends CI_Controller
 		$this->form_validation->set_rules(array(
 			array('field' => 'sign_up_username',
 			      'label' => 'lang:sign_up_username',
-			      'rules' => 'trim|required|alpha_dash|min_length[2]|max_length[24]|callback_username_check'),
+			      'rules' => 'trim|required|alpha_dash|min_length['.$this->config->item('sign_up_username_min_length').']|max_length['.$this->config->item('sign_up_username_min_length').']|callback_username_check'),
 			array('field' => 'sign_up_password',
 			      'label' => 'lang:sign_up_password',
-			      'rules' => 'trim|required|min_length[6]'),
+			      'rules' => 'trim|required|min_length['.$this->config->item('sign_up_password_min_length').']'),
 			array('field' => 'sign_up_email',
 			      'label' => 'lang:sign_up_email',
 			      'rules' => 'trim|required|valid_email|max_length[160]|callback_email_check'),
@@ -122,7 +122,7 @@ class Sign_up extends CI_Controller
 						if($this->config->item("sign_up_auto_sign_in"))
 						{
 							// Run sign in routine
-							$this->authentication->sign_in($this->input->post('sign_in_username_email', TRUE), $this->input->post('sign_in_password', TRUE), $this->input->post('sign_in_remember', TRUE));
+							$this->authentication->sign_in($this->input->post('sign_up_username', TRUE), $this->input->post('sign_up_password', TRUE), $this->input->post('sign_in_remember', TRUE));
 						}
 						
 						// Load confirmation view
@@ -148,7 +148,7 @@ class Sign_up extends CI_Controller
 					if ($this->config->item("sign_up_auto_sign_in"))
 					{
 						// Run sign in routine
-						$this->authentication->sign_in($this->input->post('sign_in_username_email', TRUE), $this->input->post('sign_in_password', TRUE), $this->input->post('sign_in_remember', TRUE));
+						$this->authentication->sign_in($this->input->post('sign_up_username', TRUE), $this->input->post('sign_up_password', TRUE));
 					}
 					redirect('account/sign_in');
 				}

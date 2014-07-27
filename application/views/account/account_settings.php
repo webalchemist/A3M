@@ -8,7 +8,7 @@
 	<?php echo $profile_info; ?>
 </div>
 <?php endif;
-echo form_open_multipart(uri_string(), 'class="form-horizontal" role="form"');
+echo form_open_multipart(uri_string(), 'class="form-horizontal" role="form" id="form-profile"');
 echo form_hidden('form_type', 'profile');
 echo form_fieldset(); ?>
 
@@ -16,7 +16,7 @@ echo form_fieldset(); ?>
     <label class="control-label col-lg-2" for="profile_username"><?php echo lang('profile_username'); ?></label>
 
     <div class="col-lg-10">
-	<?php echo form_input(array('name' => 'profile_username', 'id' => 'profile_username', 'value' => set_value('profile_username') ? set_value('profile_username') : (isset($account->username) ? $account->username : ''), 'maxlength' => '24', 'class' => 'form-control'));
+	<?php echo form_input(array('name' => 'profile_username', 'id' => 'profile_username', 'value' => set_value('profile_username') ? set_value('profile_username') : (isset($account->username) ? $account->username : ''), 'maxlength' => $this->config->item('sign_up_username_max_length'), 'class' => 'form-control'));
 	if (form_error('profile_username') || isset($profile_username_error))
 	{
 	    echo '<span class="alert alert-danger">';
@@ -85,7 +85,7 @@ echo form_close(); ?>
 	<?php echo $settings_info; ?>
 </div>
 <?php endif;
-echo form_open(uri_string(), 'class="form-horizontal"');
+echo form_open(uri_string(), 'class="form-horizontal" id="form-settings"');
 echo form_hidden('form_type', 'settings');
 echo form_fieldset(); ?>
 
@@ -244,3 +244,53 @@ echo form_fieldset(); ?>
 
 <?php echo form_fieldset_close();
 echo form_close(); ?>
+<script>
+$(document).ready(function() {
+    $('#form-profile').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            profile_username:{
+                threshold: 3,
+                validators:{
+                    notEmpty: {
+                        message: '<?php echo lang('sign_up_js_validation_no_username'); ?>'
+                    },
+                    stringLength:{
+                        min: <?php echo $this->config->item('sign_up_username_min_length'); ?>,
+                        max: <?php echo $this->config->item('sign_up_username_max_length'); ?>,
+                        message: '<?php echo sprintf(lang('sign_up_js_validation_short'), $this->config->item('sign_up_username_min_length'), $this->config->item('sign_up_username_max_length')); ?>'
+                    },
+                    remote:{
+                        url: "./account/settings/username_exists/",
+                        message: '<?php echo lang('sign_up_username_taken'); ?>'
+                    }
+                }
+            }
+        }
+    });
+    $('#form-settings').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            settings_email:{
+                threshold: 5,
+                validators:{
+                    notEmpty: {
+                        message: '<?php echo lang('sign_up_js_validation_email_invaild'); ?>'
+                    },
+                    emailAddress:{
+                        message: '<?php echo lang('sign_up_js_validation_email_invaild'); ?>'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>

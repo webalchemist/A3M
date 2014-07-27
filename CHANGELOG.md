@@ -1,7 +1,6 @@
 ## v2.0.0
-* Fix: Fix a permission bug in admin manage roles and manage permissions
 * New feature: #78, #59, #27 HybridAuth was integrated into A3M, which means that the old social logins no longer work.
-* New feature: #30 Verify e-mail upon sign-up (can be now enabled in config).
+* New feature: #30 Verify e-mail after sign-up (can be now enabled in config).
 * New feature: Default user group can be set in config.
 * New feature: Added jQuery validation to sign up page.
 * New feature: #74 Force user to reset password upon next sign-in
@@ -10,7 +9,7 @@
 * New feature: Initialize function in authentication library
 * New feature: Authorization library is_role() now accepts arrays
 * New feature: Added support for DocBlock documentation generation
-* New feature: Support for DocBlock documentation
+* New feature: Can now set settings min and max length for username and min length for password
 * Update: Update to jQuery 2.1.1
 * Update: Updated Twitter Bootstrap to 3.2.0
 * Update: #70 Updated to Twitter Bootstrap 3.0.3
@@ -20,9 +19,11 @@
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.
 * Change: Profile settings was merged into Account settings to reduce user confusion
-* Remove: Currency table and reference to country by IP table and functionality
+* Remove: Currency table and reference to country by IP table and related functionality
 
 ## v1.0.3
+* Fix: #98 Session Error after updating to CI 2.2.0
+* Fix: Fix a permission bug in admin manage roles and manage permissions
 * Update: Gravatar library
 
 ## v1.0.2

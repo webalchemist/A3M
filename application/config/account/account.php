@@ -23,6 +23,9 @@ $config['sign_in_recaptcha_offset'] 	= 3;
 $config['sign_up_recaptcha_enabled'] 	= FALSE;
 $config['sign_up_auto_sign_in'] 	= TRUE;
 $config['sign_up_default_user_group']   = 2;
+$config['sign_up_username_min_length']  = 2;
+$config['sign_up_username_max_length']  = 24;
+$config['sign_up_password_min_length']  = 6;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +56,7 @@ $config['third_party_auth'] = array(
 "providers" => array (
         // openid providers
         "OpenID" => array (
-                "enabled" => true
+                "enabled" => TRUE
         ),
 
         "Yahoo" => array (
@@ -71,12 +74,12 @@ $config['third_party_auth'] = array(
         ),
 
         "Facebook" => array (
-                "enabled" => true,
+                "enabled" => FALSE,
                 "keys"    => array ( "id" => "", "secret" => "" ),
         ),
 
         "Twitter" => array (
-                "enabled" => true,
+                "enabled" => FALSE,
                 "keys"    => array ( "key" => "", "secret" => "" )
         ),
 
@@ -87,7 +90,7 @@ $config['third_party_auth'] = array(
         ),
 
         "LinkedIn" => array (
-                "enabled" => TRUE,
+                "enabled" => FALSE,
                 "keys"    => array ( "key" => "", "secret" => "" )
         ),
 

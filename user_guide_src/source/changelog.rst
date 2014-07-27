@@ -61,6 +61,7 @@ Release Date: Not Released
    -  Added availability checks where usage of dangerous functions like ``eval()`` and ``exec()`` is required.
    -  Added support for changing the file extension of log files using ``$config['log_file_extension']``.
    -  Added support for turning newline standardization on/off via ``$config['standardize_newlines']`` and set it to FALSE by default.
+   -  Added configuration setting ``$config['composer_autoload']`` to enable loading of a `Composer <https://getcomposer.org/>`_ auto-loader.
 
 -  Helpers
 
@@ -506,6 +507,7 @@ Release Date: Not Released
       -  Added ``$config['csrf_regeneration']``, which makes token regeneration optional.
       -  Added ``$config['csrf_exclude_uris']``, which allows you list URIs which will not have the CSRF validation methods run.
       -  Modified method ``sanitize_filename()`` to read a public ``$filename_bad_chars`` property for getting the invalid characters list.
+      -  Return status code of 403 instead of a 500 if CSRF protection is enabled but a token is missing from a request.
 
    -  :doc:`Language Library <libraries/language>` changes include:
 
@@ -530,7 +532,7 @@ Release Date: Not Released
       - `Multibyte String <http://php.net/mbstring>`_ (limited support).
       - `Hash <http://php.net/hash>`_ (``hash_equals()``, ``hash_pbkdf2()``).
       - `Password Hashing <http://php.net/password>`_.
-      - `Array Functions <http://php.net/book.array>`_ (``array_column()``, ``array_replace()``, ``array_replace_recursive()``).
+      - `Standard Functions ``array_column()``, ``array_replace()``, ``array_replace_recursive()``, ``hex2bin()``, ``quoted_printable_encode()``.
 
    -  Removed ``CI_CORE`` boolean constant from *CodeIgniter.php* (no longer Reactor and Core versions).
    -  Log Library will now try to create the **log_path** directory if it doesn't exist.

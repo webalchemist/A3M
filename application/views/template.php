@@ -13,16 +13,24 @@
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico"/>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="resource/js/jquery.min.js"><\/script>')</script>
-    <link type="text/css" rel="stylesheet" href="<?php echo base_url().RES_DIR; ?>/bootstrap/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="<?php echo base_url().RES_DIR; ?>/css/style.css"/>
+    <script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="resource/js/jquery.min.js"><\/script>');</script>
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url(RES_DIR.'/bootstrap/css/bootstrap.min.css'); ?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url(RES_DIR.'/css/style.css'); ?>"/>
     <script src="<?php echo base_url().RES_DIR; ?>/bootstrap/js/bootstrap.min.js"></script>
-    
+    <?php
+    if($this->load->is_loaded('form_validation'))
+    {
+        //load bootstrapValidator
+        echo '<link type="text/css" rel="stylesheet" href="'.  base_url(RES_DIR.'/css/bootstrapValidator.min.css') .'" />';
+        echo '<script src="'. base_url(RES_DIR.'/js/bootstrapValidator.min.js') .'"></script>';
+    }
+    ?>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
+<?php flush(); ?>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">

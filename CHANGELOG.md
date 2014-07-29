@@ -15,6 +15,7 @@
 * Update: #70 Updated to Twitter Bootstrap 3.0.3
 * Update: #47 Updated to CodeIgniter 3.
 * Update: Update of authorization library so that are compared roles and permissions are lower string before being compared.
+* Update: .htaccess based on @chego77 suggestion. If you are using NGINX use: `location / { if (!-e $request_filename) { rewrite ^(.*)$ /index.php?/$1 last; } }` (thanks to @sventech)
 * Change: #70 Changed the naming structure for A3M.
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.

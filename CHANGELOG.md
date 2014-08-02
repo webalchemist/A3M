@@ -20,6 +20,7 @@
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.
 * Change: Profile settings was merged into Account settings to reduce user confusion
+* Fix: #106 Hardcoded English texts
 * Remove: Currency table and reference to country by IP table and related functionality
 
 ## v1.0.3

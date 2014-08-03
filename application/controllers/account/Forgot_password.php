@@ -160,7 +160,7 @@ class Forgot_password extends CI_Controller
 				return TRUE;
 			else
 			{
-				$this->form_validation->set_message('check_username_or_email', lang('form_validation_forgot_password_email_invalid'));
+				$this->form_validation->set_message('_check_username_or_email', lang('form_validation_forgot_password_email_invalid'));
 				return FALSE;
 			}
 		}
@@ -171,7 +171,7 @@ class Forgot_password extends CI_Controller
 				return TRUE;
 			else
 			{
-				$this->form_validation->set_message('check_username_or_email', lang('form_validation_forgot_password_username_invalid'));
+				$this->form_validation->set_message('_check_username_or_email', lang('form_validation_forgot_password_username_invalid'));
 				return FALSE;
 			}
 		}

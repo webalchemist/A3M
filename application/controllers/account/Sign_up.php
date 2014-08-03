@@ -137,7 +137,7 @@ class Sign_up extends CI_Controller
 						}
 						else
 						{
-							show_error('There was an error sending an e-mail. Please contact the webmaster.');
+							show_error(lang('sign_up_validation_send_error'));
 						}
 					}
 					

@@ -103,11 +103,8 @@ class Sign_up extends CI_Controller
 					// Load email library
 					$this->load->library('email');
 					
-					// Set up email preferences
-					$config['mailtype'] = 'html';
-					
 					// Initialise email lib
-					$this->email->initialize($config);
+					$this->email->initialize(array('mailtype' => 'html'));
 					
 					// Send the authentication email
 					$this->email->from($this->config->item('account_email_confirm_sender'), lang('website_title'));
@@ -137,7 +134,8 @@ class Sign_up extends CI_Controller
 						}
 						else
 						{
-							show_error(lang('sign_up_validation_send_error'));
+							show_error(lang('website_email_send_error'));
+                                                        log_message('error', $this->email->print_debugger());
 						}
 					}
 					

@@ -23,7 +23,7 @@ $lang['website_update'] = 'Update';
 $lang['website_cancel'] = 'Cancel';
 $lang['website_account_info'] = 'Account Info';
 $lang['website_admin_panel'] = 'Admin Panel';
-
+$lang['website_email_send_error'] = "There was an error sending an e-mail. Please contact the webmaster.";
 
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

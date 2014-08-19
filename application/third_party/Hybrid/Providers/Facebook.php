@@ -78,6 +78,13 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 			}
 		}
 
+        if( isset( $this->config[ 'force' ] ) && $this->config[ 'force' ] === true ){
+            $parameters[ 'auth_type' ]  = 'reauthenticate';
+            $parameters[ 'auth_nonce' ] = md5( uniqid( mt_rand(), true ) );
+
+            Hybrid_Auth::storage()->set( 'fb_auth_nonce', $parameters[ 'auth_nonce' ] );
+        }
+
 		// get the login url 
 		$url = $this->api->getLoginUrl( $parameters );
 
@@ -175,6 +182,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 		$this->user->profile->profileURL    = (array_key_exists('link',$data))?$data['link']:""; 
 		$this->user->profile->webSiteURL    = (array_key_exists('website',$data))?$data['website']:""; 
 		$this->user->profile->gender        = (array_key_exists('gender',$data))?$data['gender']:"";
+        $this->user->profile->language      = (array_key_exists('locale',$data))?$data['locale']:"";
 		$this->user->profile->description   = (array_key_exists('about',$data))?$data['about']:"";
 		$this->user->profile->email         = (array_key_exists('email',$data))?$data['email']:"";
 		$this->user->profile->emailVerified = (array_key_exists('email',$data))?$data['email']:"";

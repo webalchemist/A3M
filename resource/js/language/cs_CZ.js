@@ -184,6 +184,9 @@
         imei: {
             'default': 'Prosím zadejte správné IMEI číslo'
         },
+        imo: {
+            'default': 'Prosím zadejte správné IMO číslo'
+        },
         integer: {
             'default': 'Prosím zadejte celé číslo'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Prosím zadejte správnou MAC adresu'
         },
+        meid: {
+            'default': 'Prosím zadejte správné MEID číslo'
+        },
         notEmpty: {
             'default': 'Toto pole nesmí být prázdné'
         },
@@ -222,7 +228,12 @@
             countryNotSupported: 'Telefoní číslo pro %s není podporované',
             country: 'Prosím zadejte správné telefoní číslo pro %s',
             countries: {
+                BR: 'Brazílii',
+                ES: 'Španělsko',
+                FR: 'Francii',
                 GB: 'Velkou Británii',
+                MA: 'Maroko',
+                PK: 'Pákistán',
                 US: 'Spojené Státy Americké'
             }
         },
@@ -272,6 +283,7 @@
                 AT: 'Rakousko',
                 BE: 'Belgii',
                 BG: 'Bulharsko',
+                BR: 'Brazílii',
                 CH: 'Švýcarsko',
                 CY: 'Kypr',
                 CZ: 'Čechy',
@@ -287,6 +299,7 @@
                 HU: 'Maďarsko',
                 HR: 'Chorvatsko',
                 IE: 'Irsko',
+                IS: 'Island',
                 IT: 'Itálie',
                 LT: 'Litvu',
                 LU: 'Lucembursko',
@@ -301,7 +314,8 @@
                 RS: 'Srbsko',
                 SE: 'Švédsko',
                 SI: 'Slovinsko',
-                SK: 'Slovensko'
+                SK: 'Slovensko',
+                ZA: 'Jižní Afriku'
             }
         },
         vin: {
@@ -312,14 +326,16 @@
             countryNotSupported: '%s není podporované',
             country: 'Prosím zadejte správné %s',
             countries: {
-                'CA': 'Kanadské PSČ',
-                'DK': 'Dánské PSČ',
-                'GB': 'PSČ Velké Británie',
-                'IT': 'Italské PSČ',
-                'NL': 'Holandské PSČ',
-                'SE': 'Švýcarské PSČ',
-                'SG': 'Singapurské PSČ',
-                'US': 'Americké PSČ'
+                BR: 'Brazílii PSČ',
+                CA: 'Kanadské PSČ',
+                DK: 'Dánské PSČ',
+                GB: 'PSČ Velké Británie',
+                IT: 'Italské PSČ',
+                MA: 'Maroko PSČ',
+                NL: 'Holandské PSČ',
+                SE: 'Švýcarské PSČ',
+                SG: 'Singapurské PSČ',
+                US: 'Americké PSČ'
             }
         }
     });

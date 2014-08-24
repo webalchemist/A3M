@@ -1,72 +1,72 @@
 (function($) {
     /**
-     * Belgium (Dutch) language package
-     * Translated by @dokterpasta
+     * The Dutch language package
+     * Translated by @jvanderheide
      */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
         base64: {
-            'default': 'Geef een geldige base 64 encoded tekst in'
+            'default': 'Voer een geldige Base64 geëncodeerde tekst in'
         },
         between: {
-            'default': 'Geef een waarde tussen %s en %s (incl de waarden)',
-            notInclusive: 'Geef een waarde strikt tussen %s en %s'
+            'default': 'Voer een waarde in van %s tot en met %s',
+            notInclusive: 'Voer een waarde die tussen %s en %s ligt'
         },
         callback: {
-            'default': 'Geef een geldige waarden in'
+            'default': 'Voer een geldige waarde in'
         },
         choice: {
-            'default': 'Geef een geldige waarden in',
-            less: 'Kies minimum %s opties',
-            more: 'Kies maximum %s opties',
-            between: 'Kies %s - %s opties'
+            'default': 'Voer een geldige waarde in',
+            less: 'Kies minimaal %s optie(s)',
+            more: 'Kies maximaal %s opties',
+            between: 'Kies tussen de %s - %s opties'
         },
         creditCard: {
-            'default': 'Geef een geldig creditkaart nummer'
+            'default': 'Voer een geldig creditcardnummer in'
         },
         cusip: {
-            'default': 'Geef een geldig CUSIP nummer'
+            'default': 'Voer een geldig CUSIP-nummer in'
         },
         cvv: {
-            'default': 'Geef een geldig CVV nummer'
+            'default': 'Voer een geldig CVV-nummer in'
         },
         date: {
-            'default': 'Geef een geldige datum'
+            'default': 'Voer een geldige datum in'
         },
         different: {
-            'default': 'Geef een andere waarde '
+            'default': 'Voer een andere waarde in'
         },
         digits: {
-             'default': 'Geef alleen cijfers in'
+             'default': 'Voer enkel cijfers in'
         },
         ean: {
-            'default': 'Geef een geldig EAN nummer'
+            'default': 'Voer een geldige EAN-code in'
         },
         emailAddress: {
-            'default': 'Geef een geldig email adres op'
+            'default': 'Voer een geldig e-mailadres in'
         },
         file: {
             'default': 'Kies een geldig bestand'
         },
         greaterThan: {
-            'default': 'Geef een waar de gelijk aan of groter dan %s',
-            notInclusive: 'Geef een waarde groter dan %s'
+            'default': 'Voer een waarde in die gelijk is aan of groter is dan %s',
+            notInclusive: 'Voer een waarde in die is groter dan %s'
         },
         grid: {
-            'default': 'Geef een geldig GRId nummer'
+            'default': 'Voer een geldig GRId-nummer in'
         },
         hex: {
-            'default': 'Geef een geldig hexadecimaal nummer'
+            'default': 'Voer een geldig hexadecimaal nummer in'
         },
         hexColor: {
-            'default': 'Geef een geldige hex kleur'
+            'default': 'Voer een geldige hexadecimale kleurcode in'
         },
         iban: {
-            'default': 'Geef een geldig IBAN nummer',
-            countryNotSupported: 'De land code %s is niet ondersteund',
-            country: 'Geef een geldig IBAN nummer van %s',
+            'default': 'Voer een geldig IBAN nummer in',
+            countryNotSupported: 'De land code %s wordt niet ondersteund',
+            country: 'Voer een geldig IBAN nummer in uit %s',
             countries: {
                 AD: 'Andorra',
-                AE: 'Verenigde Arabische Emiraten',
+                AE: 'de Verenigde Arabische Emiraten',
                 AL: 'Albania',
                 AO: 'Angola',
                 AT: 'Oostenrijk',
@@ -88,14 +88,14 @@
                 CZ: 'Tsjechië',
                 DE: 'Duitsland',
                 DK: 'Denemarken',
-                DO: 'Dominicaanse Republiek',
+                DO: 'de Dominicaanse Republiek',
                 DZ: 'Algerije',
                 EE: 'Estland',
                 ES: 'Spanje',
                 FI: 'Finland',
-                FO: 'Faeröer',
+                FO: 'de Faeröer',
                 FR: 'Frankrijk',
-                GB: 'Verenigd Koninkrijk',
+                GB: 'het Verenigd Koninkrijk',
                 GE: 'Georgia',
                 GI: 'Gibraltar',
                 GL: 'Groenland',
@@ -130,7 +130,7 @@
                 NO: 'Noorwegen',
                 PK: 'Pakistan',
                 PL: 'Polen',
-                PS: 'Palestijnse',
+                PS: 'Palestina',
                 PT: 'Portugal',
                 QA: 'Qatar',
                 RO: 'Roemenië',
@@ -143,142 +143,142 @@
                 SN: 'Senegal',
                 TN: 'Tunesië',
                 TR: 'Turkije',
-                VG: 'Britse Maagdeneilanden'
+                VG: 'de Britse Maagdeneilanden'
             }
         },
         id: {
-            'default': 'Geef een geldig identificatie nummer',
-            countryNotSupported: 'De land code %s is niet ondersteund',
-            country: 'Geef een geldig %s identificatie nummer',
+            'default': 'Voer een geldig identificatie nummer in',
+            countryNotSupported: 'De land code %s wordt niet ondersteund',
+            country: 'Voer een geldig %s identificatie nummer in',
             countries: {
-                BA: 'Bosnië-Herzegovina',
+                BA: 'Bosnisch',
                 BG: 'Bulgaars',
                 BR: 'Braziliaans',
                 CH: 'Zwitsers',
                 CL: 'Chileens',
                 CZ: 'Tsjechisch',
                 DK: 'Deens',
-                EE: 'Estonian',
+                EE: 'Estisch',
                 ES: 'Spaans',
                 FI: 'Fins',
                 HR: 'Kroatisch',
-                IE: 'Irish',
+                IE: 'Iers',
                 IS: 'IJslands',
-                LT: 'Litouwse',
+                LT: 'Litouws',
                 LV: 'Lets',
-                ME: 'Montenegro',
+                ME: 'Montenegrijns',
                 MK: 'Macedonisch',
                 NL: 'Nederlands',
                 RO: 'Roemeens',
                 RS: 'Servisch',
                 SE: 'Zweeds',
                 SI: 'Sloveens',
-                SK: 'Slowaakse',
-                SM: 'San Marino',
+                SK: 'Slowaaks',
+                SM: 'San Marinees',
                 ZA: 'Zuid-Afrikaans'
             }
         },
         identical: {
-            'default': 'Geef dezelfde waarde'
+            'default': 'Voer dezelfde waarde in'
         },
         imei: {
-            'default': 'Geef een geldig IMEI nummer'
+            'default': 'Voer een geldig IMEI-nummer in'
         },
         imo: {
-            'default': 'Geef een geldig IMO nummer'
+            'default': 'Voer een geldig IMO-nummer in'
         },
         integer: {
-            'default': 'Geef een geldig nummer'
+            'default': 'Voer een geldig getal in'
         },
         ip: {
-            'default': 'Geef een geldig IP adres',
-            ipv4: 'Geef een geldig IPv4 adres',
-            ipv6: 'Geef een geldig IPv6 adres'
+            'default': 'Voer een geldig IP adres in',
+            ipv4: 'Voer een geldig IPv4 adres in',
+            ipv6: 'Voer een geldig IPv6 adres in'
         },
         isbn: {
-            'default': 'Geef een geldig ISBN nummer'
+            'default': 'Voer een geldig ISBN-nummer in'
         },
         isin: {
-            'default': 'Geef een geldig ISIN nummer'
+            'default': 'Voer een geldig ISIN-nummer in'
         },
         ismn: {
-            'default': 'Geef een geldig ISMN nummer'
+            'default': 'Voer een geldig ISMN-nummer in'
         },
         issn: {
-            'default': 'Geef een geldig ISSN nummer'
+            'default': 'Voer een geldig ISSN-nummer in'
         },
         lessThan: {
-            'default': 'Geef een waar de gelijk aan of kleiner dan %s',
-            notInclusive: 'Geef een waarde kleiner dan %s'
+            'default': 'Voer een waarde in gelijk aan of kleiner dan %s',
+            notInclusive: 'Voer een waarde in kleiner dan %s'
         },
         mac: {
-            'default': 'Geef een geldig MAC adres'
+            'default': 'Voer een geldig MAC adres in'
         },
         meid: {
-            'default': 'Geef een geldig MEID nummer'
+            'default': 'Voer een geldig MEID-nummer in'
         },
         notEmpty: {
-            'default': 'Geef een waarde'
+            'default': 'Voer een waarde in'
         },
         numeric: {
-            'default': 'Geef een geldig comma getal'
+            'default': 'Voer een geldig kommagetal in'
         },
         phone: {
-            'default': 'Geef een geldig telefoon nummer',
-            countryNotSupported: 'De land code %s is niet ondersteund',
-            country: 'Geef een geldig telefoon nummer van %s',
+            'default': 'Voer een geldig telefoonnummer in',
+            countryNotSupported: 'De land code %s wordt niet ondersteund',
+            country: 'Voer een geldig telefoonnummer in uit %s',
             countries: {
                 BR: 'Brazilië',
                 ES: 'Spanje',
                 FR: 'Frankrijk',
-                GB: 'Verenigd Koninkrijk',
+                GB: 'het Verenigd Koninkrijk',
                 MA: 'Marokko',
                 PK: 'Pakistan',
-                US: 'VS'
+                US: 'de Verenigde Staten'
             }
         },
         regexp: {
-            'default': 'Geef een waarde die gelijk is aan de regex'
+            'default': 'Voer een waarde in die overeenkomt met het patroon'
         },
         remote: {
-            'default': 'Geef een geldige waarde'
+            'default': 'Voer een geldige waarde in'
         },
         rtn: {
-            'default': 'Geef een geldig RTN nummer'
+            'default': 'Voer een geldig RTN-nummer in'
         },
         sedol: {
-            'default': 'Geef een geldig SEDOL nummer'
+            'default': 'Voer een geldig SEDOL-nummer in'
         },
         siren: {
-            'default': 'Geef een geldig SIREN nummer'
+            'default': 'Voer een geldig SIREN-nummer in'
         },
         siret: {
-            'default': 'Geef een geldig SIRET nummer'
+            'default': 'Voer een geldig SIRET-nummer in'
         },
         step: {
-            'default': 'Geef een geldig stap van %s'
+            'default': 'Voer een meervoud van %s in'
         },
         stringCase: {
-            'default': 'Geef alleen kleine letters',
-            upper: 'Geef alleen hoofdletters'
+            'default': 'Voer enkel kleine letters in',
+            upper: 'Voer enkel hoofdletters in'
         },
         stringLength: {
-            'default': 'Geef een waarde met de juiste lengte',
-            less: 'Geef minder dan %s karakters',
-            more: 'Geef meer dan %s karakters',
-            between: 'Geef een aantal karakters tussen %s en %s'
+            'default': 'Voer een waarde met de juiste lengte in',
+            less: 'Voer minder dan %s karakters in',
+            more: 'Voer meer dan %s karakters in',
+            between: 'Voer tussen tussen %s en %s karakters in'
         },
         uri: {
-            'default': 'Geef een geldig URI'
+            'default': 'Voer een geldige link in'
         },
         uuid: {
-            'default': 'Geef een geldig UUID nummer',
-            version: 'Geef een geldig UUID versie %s nummer'
+            'default': 'Voer een geldige UUID in',
+            version: 'Voer een geldige UUID (versie %s) in'
         },
         vat: {
-            'default': 'Geef een geldig BTW nummer',
-            countryNotSupported: 'De land code %s is niet ondersteund',
-            country: 'Geef een geldig %s BTW nummer',
+            'default': 'Voer een geldig BTW-nummer in',
+            countryNotSupported: 'De land code %s wordt niet ondersteund',
+            country: 'Voer een geldig %s BTW-nummer in',
             countries: {
                 AT: 'Oostenrijks',
                 BE: 'Belgisch',
@@ -289,7 +289,7 @@
                 CZ: 'Tsjechisch',
                 DE: 'Duits',
                 DK: 'Deens',
-                EE: 'Estonian',
+                EE: 'Estisch',
                 ES: 'Spaans',
                 FI: 'Fins',
                 FR: 'Frans',
@@ -299,14 +299,14 @@
                 HU: 'Hongaars',
                 HR: 'Kroatisch',
                 IE: 'Iers',
-                IS: 'IJsland',
+                IS: 'IJslanda',
                 IT: 'Italiaans',
-                LT: 'Litouwse',
+                LT: 'Litouws',
                 LU: 'Luxemburgs',
                 LV: 'Lets',
                 MT: 'Maltees',
                 NL: 'Nederlands',
-                NO: 'Noorweegs',
+                NO: 'Noors',
                 PL: 'Pools',
                 PT: 'Portugees',
                 RO: 'Roemeens',
@@ -319,23 +319,23 @@
             }
         },
         vin: {
-            'default': 'Geef een geldig VIN nummer'
+            'default': 'Voer een geldig VIN-nummer in'
         },
         zipCode: {
-            'default': 'Geef een geldige postcode',
-            countryNotSupported: 'De land code %s is niet ondersteund',
-            country: 'Please enter a valid %s',
+            'default': 'Voer een geldige postcode in',
+            countryNotSupported: 'De land code %s wordt niet ondersteund',
+            country: 'Voer een geldige %s in',
             countries: {
-                BR: 'Braziliaans postcode',
-                CA: 'Canadeese postcode',
+                BR: 'Braziliaanse postcode',
+                CA: 'Canadese postcode',
                 DK: 'Deense postcode',
                 GB: 'Engelse postcode',
                 IT: 'Italiaanse postcode',
-                MA: 'Marokko postcode',
+                MA: 'Marokkaanse postcode',
                 NL: 'Nederlandse postcode',
                 SE: 'Zwitserse postcode',
-                SG: 'postcode van Signapore',
-                US: 'VS postcode'
+                SG: 'Singaporese postcode',
+                US: 'Amerikaanse postcode'
             }
         }
     });

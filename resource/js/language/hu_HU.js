@@ -156,6 +156,7 @@
                 BR: 'brazil',
                 CH: 'svájci',
                 CL: 'chilei',
+                CN: 'Kína',
                 CZ: 'cseh',
                 DK: 'dán',
                 EE: 'észt',
@@ -175,6 +176,7 @@
                 SI: 'szlovén',
                 SK: 'szlovák',
                 SM: 'San Marino beli',
+                TH: 'thaiföld',
                 ZA: 'dél afrikai'
             }
         },
@@ -229,12 +231,17 @@
             country: 'Kérlek, hogy érvényes %s telefonszámot adj meg',
             countries: {
                 BR: 'brazil',
+                CN: 'kína',
+                DK: 'dán',
                 ES: 'spanyol',
                 FR: 'francia',
                 GB: 'Egyesült Királyság beli',
                 MA: 'Marokkó',
                 PK: 'Pakisztán',
-                US: 'Egyesült Államok beli'
+                RO: 'Románia',
+                TH: 'thaiföld',
+                US: 'Egyesült Államok beli',
+                VE: 'venezuelai'
             }
         },
         regexp: {
@@ -315,6 +322,7 @@
                 SE: 'svéd',
                 SI: 'szlovén',
                 SK: 'szlovák',
+                VE: 'venezuelai',
                 ZA: 'dél afrikai'
             }
         },
@@ -331,8 +339,9 @@
                 DK: 'dán',
                 GB: 'Egyesült Királyság beli',
                 IT: 'olasz',
-                MA: 'Marokkó',
+                MA: 'marokkó',
                 NL: 'holland',
+                RO: 'románia',
                 SE: 'svájci',
                 SG: 'singaporei',
                 US: 'Egyesült Államok beli'

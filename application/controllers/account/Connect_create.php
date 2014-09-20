@@ -54,7 +54,20 @@ class Connect_create extends CI_Controller
 
 		// Setup form validation
 		$this->form_validation->set_error_delimiters('<span class="alert alert-danger">', '</span>');
-		$this->form_validation->set_rules(array(array('field' => 'connect_create_username', 'label' => 'lang:connect_create_username', 'rules' => 'trim|required|alpha_numeric|min_length[2]|max_length[16]'), array('field' => 'connect_create_email', 'label' => 'lang:connect_create_email', 'rules' => 'trim|required|valid_email|max_length[160]')));
+		$this->form_validation->set_rules(array(
+                    array('field' => 'connect_create_username',
+                          'label' => 'lang:connect_create_username',
+                          'rules' => 'trim|required|alpha_numeric|min_length[2]|max_length[16]'),
+                    array('field' => 'connect_create_email',
+                          'label' => 'lang:connect_create_email',
+                          'rules' => 'trim|required|valid_email|max_length[160]'),
+                    array('field' => 'connect_password',
+                          'label' => 'lang:connect_password',
+                          'rules' => 'trim|required|min_length['.$this->config->item('sign_up_password_min_length').']'),
+                    array('field' => 'connect_confirm_password',
+			  'label' => 'lang:connect_password_confirm',
+			  'rules' => 'trim|required|min_length['.$this->config->item('sign_up_password_min_length').']|matches[connect_password]')
+                    ));
 
 		// Run form validation
 		if ($this->form_validation->run())
@@ -72,7 +85,7 @@ class Connect_create extends CI_Controller
 			else
 			{
 				// Create user
-				$user_id = $this->Account_model->create($this->input->post('connect_create_username', TRUE), $this->input->post('connect_create_email', TRUE));
+				$user_id = $this->Account_model->create($this->input->post('connect_create_username', TRUE), $this->input->post('connect_create_email', TRUE), $this->input->post('connect_password', TRUE));
 				//extract user details from $data['connect_create']
 				//@todo 'dateofbirth' => 
 				$user_details = array('firstname' => $data['connect_create']['firstName'], 'lastname' => $data['connect_create']['lastName'], 'gender' => $data['connect_create']['gender'], 'picture' => $data['connect_create']['photoURL']);

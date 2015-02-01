@@ -56,7 +56,7 @@ class Sign_up extends CI_Controller
 		$this->form_validation->set_rules(array(
 			array('field' => 'sign_up_username',
 			      'label' => 'lang:sign_up_username',
-			      'rules' => 'trim|required|alpha_dash|min_length['.$this->config->item('sign_up_username_min_length').']|max_length['.$this->config->item('sign_up_username_min_length').']|callback_username_check'),
+			      'rules' => 'trim|required|alpha_dash|min_length['.$this->config->item('sign_up_username_min_length').']|max_length['.$this->config->item('sign_up_username_max_length').']|callback_username_check'),
 			array('field' => 'sign_up_password',
 			      'label' => 'lang:sign_up_password',
 			      'rules' => 'trim|required|min_length['.$this->config->item('sign_up_password_min_length').']'),

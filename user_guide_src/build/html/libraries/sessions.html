@@ -472,11 +472,17 @@ session data array:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">unset_userdata</span><span class="p">(</span><span class="s1">&#39;some_name&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This method also accepts an associative array of items to unset:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$array_items</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+<p>This method also accepts an array of item keys to unset:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$array_items</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">);</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">unset_userdata</span><span class="p">(</span><span class="nv">$array_items</span><span class="p">);</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In previous versions, the <tt class="docutils literal"><span class="pre">unset_userdata()</span></tt> method used
+to accept an associative array of <tt class="docutils literal"><span class="pre">key</span> <span class="pre">=&gt;</span> <span class="pre">'dummy</span> <span class="pre">value'</span></tt>
+pairs. This is no longer supported.</p>
 </div>
 </div>
 <div class="section" id="flashdata">
@@ -814,14 +820,14 @@ chosen <em>sess_save_path</em> directory. Otherwise, anybody who can do that, ca
 also steal any of the current sessions (also known as &#8220;session fixation&#8221;
 attack).</p>
 <p>On UNIX-like operating systems, this is usually achieved by setting the
-0600 mode permissions on that directory via the <cite>chmod</cite> command, which
+0700 mode permissions on that directory via the <cite>chmod</cite> command, which
 allows only the directory&#8217;s owner to perform read and write operations on
 it. But be careful because the system user <em>running</em> the script is usually
 not your own, but something like &#8216;www-data&#8217; instead, so only setting those
 permissions will probable break your application.</p>
 <p>Instead, you should do something like this, depending on your environment</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nb">mkdir</span> <span class="o">/&lt;</span><span class="nx">path</span> <span class="nx">to</span> <span class="nx">your</span> <span class="nx">application</span> <span class="nx">directory</span><span class="o">&gt;/</span><span class="nx">sessions</span><span class="o">/</span>
-<span class="nb">chmod</span> <span class="mo">0600</span> <span class="o">/&lt;</span><span class="nx">path</span> <span class="nx">to</span> <span class="nx">your</span> <span class="nx">application</span> <span class="nx">directory</span><span class="o">&gt;/</span><span class="nx">sessions</span><span class="o">/</span>
+<span class="nb">chmod</span> <span class="mo">0700</span> <span class="o">/&lt;</span><span class="nx">path</span> <span class="nx">to</span> <span class="nx">your</span> <span class="nx">application</span> <span class="nx">directory</span><span class="o">&gt;/</span><span class="nx">sessions</span><span class="o">/</span>
 <span class="nb">chown</span> <span class="nx">www</span><span class="o">-</span><span class="nx">data</span> <span class="o">/&lt;</span><span class="nx">path</span> <span class="nx">to</span> <span class="nx">your</span> <span class="nx">application</span> <span class="nx">directory</span><span class="o">&gt;/</span><span class="nx">sessions</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -1081,17 +1087,22 @@ configuration value to &#8216;dummy&#8217; and use your own driver. Congratulati
 <dt id="CI_Session">
 <em class="property">class </em><tt class="descname">CI_Session</tt><a class="headerlink" href="#CI_Session" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
-<dt id="CI_Session.userdata">
-<tt class="descname">userdata</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.userdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::userdata">
+<tt class="descname">userdata</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::userdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Session item key or NULL</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Session item key or NULL</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Value of the specified item key, or an array of all userdata</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Value of the specified item key, or an array of all userdata</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">mixed</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1106,8 +1117,8 @@ directly access <tt class="docutils literal"><span class="pre">$_SESSION</span><
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.all_userdata">
-<tt class="descname">all_userdata</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session.all_userdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::all_userdata">
+<tt class="descname">all_userdata</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session::all_userdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1148,17 +1159,22 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.has_userdata">
-<tt class="descname">has_userdata</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.has_userdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::has_userdata">
+<tt class="descname">has_userdata</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::has_userdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>string</em>) &#8211; Session item key</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; Session item key</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">TRUE if the specified key exists, FALSE if not</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE if the specified key exists, FALSE if not</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1173,8 +1189,8 @@ use that instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.set_userdata">
-<tt class="descname">set_userdata</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.set_userdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::set_userdata">
+<tt class="descname">set_userdata</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::set_userdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1199,15 +1215,19 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.unset_userdata">
-<tt class="descname">unset_userdata</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.unset_userdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::unset_userdata">
+<tt class="descname">unset_userdata</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::unset_userdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Key for the session data item to unset, or an array of multiple keys</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Key for the session data item to unset, or an array of multiple keys</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1223,17 +1243,22 @@ use that instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.mark_as_flash">
-<tt class="descname">mark_as_flash</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.mark_as_flash" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::mark_as_flash">
+<tt class="descname">mark_as_flash</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::mark_as_flash" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Key to mark as flashdata, or an array of multiple keys</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Key to mark as flashdata, or an array of multiple keys</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">TRUE on success, FALSE on failure</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE on success, FALSE on failure</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1242,8 +1267,8 @@ use that instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.get_flash_keys">
-<tt class="descname">get_flash_keys</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session.get_flash_keys" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::get_flash_keys">
+<tt class="descname">get_flash_keys</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session::get_flash_keys" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1259,15 +1284,19 @@ use that instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.umark_flash">
-<tt class="descname">umark_flash</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.umark_flash" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::umark_flash">
+<tt class="descname">umark_flash</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::umark_flash" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Key to be un-marked as flashdata, or an array of multiple keys</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Key to be un-marked as flashdata, or an array of multiple keys</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1276,17 +1305,22 @@ use that instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.flashdata">
-<tt class="descname">flashdata</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.flashdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::flashdata">
+<tt class="descname">flashdata</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::flashdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Flashdata item key or NULL</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Flashdata item key or NULL</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Value of the specified item key, or an array of all flashdata</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Value of the specified item key, or an array of all flashdata</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">mixed</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1302,17 +1336,22 @@ directly access <tt class="docutils literal"><span class="pre">$_SESSION</span><
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.keep_flashdata">
-<tt class="descname">keep_flashdata</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.keep_flashdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::keep_flashdata">
+<tt class="descname">keep_flashdata</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::keep_flashdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Flashdata key to keep, or an array of multiple keys</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Flashdata key to keep, or an array of multiple keys</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">TRUE on success, FALSE on failure</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE on success, FALSE on failure</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1327,8 +1366,8 @@ an alias for the <tt class="docutils literal"><span class="pre">mark_as_flash()<
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.set_flashdata">
-<tt class="descname">set_flashdata</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.set_flashdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::set_flashdata">
+<tt class="descname">set_flashdata</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::set_flashdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1354,8 +1393,8 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.mark_as_temp">
-<tt class="descname">mark_as_temp</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$ttl = 300</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.mark_as_temp" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::mark_as_temp">
+<tt class="descname">mark_as_temp</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$ttl = 300</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::mark_as_temp" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1379,8 +1418,8 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.get_temp_keys">
-<tt class="descname">get_temp_keys</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session.get_temp_keys" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::get_temp_keys">
+<tt class="descname">get_temp_keys</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session::get_temp_keys" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1396,15 +1435,19 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.umark_temp">
-<tt class="descname">umark_temp</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.umark_temp" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::umark_temp">
+<tt class="descname">umark_temp</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::umark_temp" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Key to be un-marked as tempdata, or an array of multiple keys</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Key to be un-marked as tempdata, or an array of multiple keys</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1413,17 +1456,22 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.tempdata">
-<tt class="descname">tempdata</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.tempdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::tempdata">
+<tt class="descname">tempdata</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::tempdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>mixed</em>) &#8211; Tempdata item key or NULL</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Tempdata item key or NULL</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Value of the specified item key, or an array of all tempdata</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Value of the specified item key, or an array of all tempdata</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">mixed</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1439,8 +1487,8 @@ directly access <tt class="docutils literal"><span class="pre">$_SESSION</span><
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.set_tempdata">
-<tt class="descname">set_tempdata</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.set_tempdata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::set_tempdata">
+<tt class="descname">set_tempdata</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::set_tempdata" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1467,15 +1515,19 @@ compatibility with older applications.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.sess_regenerate">
-<tt class="descname">sess_regenerate</tt><big>(</big><span class="optional">[</span><em>$destroy = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session.sess_regenerate" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::sess_regenerate">
+<tt class="descname">sess_regenerate</tt><big>(</big><span class="optional">[</span><em>$destroy = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Session::sess_regenerate" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$destroy</strong> (<em>bool</em>) &#8211; Whether to destroy session data</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$destroy</strong> (<em>bool</em>) &#8211; Whether to destroy session data</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1489,8 +1541,8 @@ session&#8217;s data.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.sess_destroy">
-<tt class="descname">sess_destroy</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session.sess_destroy" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::sess_destroy">
+<tt class="descname">sess_destroy</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Session::sess_destroy" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1514,17 +1566,22 @@ you do that.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.__get">
-<tt class="descname">__get</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session.__get" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::__get">
+<tt class="descname">__get</tt><big>(</big><em>$key</em><big>)</big><a class="headerlink" href="#CI_Session::__get" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$key</strong> (<em>string</em>) &#8211; Session item key</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; Session item key</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The requested session data item, or NULL if it doesn&#8217;t exist</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The requested session data item, or NULL if it doesn&#8217;t exist</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">mixed</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1537,8 +1594,8 @@ if that&#8217;s what you prefer.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Session.__set">
-<tt class="descname">__set</tt><big>(</big><em>$key</em>, <em>$value</em><big>)</big><a class="headerlink" href="#CI_Session.__set" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Session::__set">
+<tt class="descname">__set</tt><big>(</big><em>$key</em>, <em>$value</em><big>)</big><a class="headerlink" href="#CI_Session::__set" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1589,7 +1646,7 @@ properties:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2015, British Columbia Institute of Technology.
-      Last updated on Jan 26, 2015.
+      Last updated on Feb 03, 2015.
     </p>
   </div>
 

@@ -203,11 +203,15 @@ session data array::
 
 	$this->session->unset_userdata('some_name');
 
-This method also accepts an associative array of items to unset::
+This method also accepts an array of item keys to unset::
 
-	$array_items = array('username' => '', 'email' => '');
+	$array_items = array('username', 'email');
 
 	$this->session->unset_userdata($array_items);
+
+.. note:: In previous versions, the ``unset_userdata()`` method used
+	to accept an associative array of ``key => 'dummy value'``
+	pairs. This is no longer supported.
 
 Flashdata
 =========
@@ -489,7 +493,7 @@ also steal any of the current sessions (also known as "session fixation"
 attack).
 
 On UNIX-like operating systems, this is usually achieved by setting the
-0600 mode permissions on that directory via the `chmod` command, which
+0700 mode permissions on that directory via the `chmod` command, which
 allows only the directory's owner to perform read and write operations on
 it. But be careful because the system user *running* the script is usually
 not your own, but something like 'www-data' instead, so only setting those
@@ -499,7 +503,7 @@ Instead, you should do something like this, depending on your environment
 ::
 
 	mkdir /<path to your application directory>/sessions/
-	chmod 0600 /<path to your application directory>/sessions/
+	chmod 0700 /<path to your application directory>/sessions/
 	chown www-data /<path to your application directory>/sessions/
 
 Bonus Tip
@@ -764,9 +768,9 @@ configuration value to 'dummy' and use your own driver. Congratulations!
 Class Reference
 ***************
 
-.. class:: CI_Session
+.. php:class:: CI_Session
 
-	.. method:: userdata([$key = NULL])
+	.. php:method:: userdata([$key = NULL])
 
 		:param	mixed	$key: Session item key or NULL
 		:returns:	Value of the specified item key, or an array of all userdata
@@ -779,7 +783,7 @@ Class Reference
 			compatibility with older applications. You should
 			directly access ``$_SESSION`` instead.
 
-	.. method:: all_userdata()
+	.. php:method:: all_userdata()
 
 		:returns:	An array of all userdata
 		:rtype:	array
@@ -789,7 +793,7 @@ Class Reference
 		.. note:: This method is DEPRECATED. Use ``userdata()``
 			with no parameters instead.
 
-	.. method:: &get_usedata()
+	.. php:method:: &get_usedata()
 
 		:returns:	A reference to ``$_SESSION``
 		:rtype:	array
@@ -799,7 +803,7 @@ Class Reference
 		.. note:: This is a legacy method kept only for backwards
 			compatibility with older applications.
 
-	.. method:: has_userdata($key)
+	.. php:method:: has_userdata($key)
 
 		:param	string	$key: Session item key
 		:returns:	TRUE if the specified key exists, FALSE if not
@@ -812,7 +816,7 @@ Class Reference
 			an alias for ``isset($_SESSION[$key])`` - please
 			use that instead.
 
-	.. method:: set_userdata($data[, $value = NULL])
+	.. php:method:: set_userdata($data[, $value = NULL])
 
 		:param	mixed	$data: An array of key/value pairs to set as session data, or the key for a single item
 		:param	mixed	$value:	The value to set for a specific session item, if $data is a key
@@ -823,7 +827,7 @@ Class Reference
 		.. note:: This is a legacy method kept only for backwards
 			compatibility with older applications.
 
-	.. method:: unset_userdata($key)
+	.. php:method:: unset_userdata($key)
 
 		:param	mixed	$key: Key for the session data item to unset, or an array of multiple keys
 		:rtype:	void
@@ -836,7 +840,7 @@ Class Reference
 			an alias for ``unset($_SESSION[$key])`` - please
 			use that instead.
 
-	.. method:: mark_as_flash($key)
+	.. php:method:: mark_as_flash($key)
 
 		:param	mixed	$key: Key to mark as flashdata, or an array of multiple keys
 		:returns:	TRUE on success, FALSE on failure
@@ -845,7 +849,7 @@ Class Reference
 		Marks a ``$_SESSION`` item key (or multiple ones) as
 		"flashdata".
 
-	.. method:: get_flash_keys()
+	.. php:method:: get_flash_keys()
 
 		:returns:	Array containing the keys of all "flashdata" items.
 		:rtype:	array
@@ -853,7 +857,7 @@ Class Reference
 		Gets a list of all ``$_SESSION`` that have been marked as
 		"flashdata".
 
-	.. method:: umark_flash($key)
+	.. php:method:: umark_flash($key)
 
 		:param	mixed	$key: Key to be un-marked as flashdata, or an array of multiple keys
 		:rtype:	void
@@ -861,7 +865,7 @@ Class Reference
 		Unmarks a ``$_SESSION`` item key (or multiple ones) as
 		"flashdata".
 
-	.. method:: flashdata([$key = NULL])
+	.. php:method:: flashdata([$key = NULL])
 
 		:param	mixed	$key: Flashdata item key or NULL
 		:returns:	Value of the specified item key, or an array of all flashdata
@@ -875,7 +879,7 @@ Class Reference
 			compatibility with older applications. You should
 			directly access ``$_SESSION`` instead.
 
-	.. method:: keep_flashdata($key)
+	.. php:method:: keep_flashdata($key)
 
 		:param	mixed	$key: Flashdata key to keep, or an array of multiple keys
 		:returns:	TRUE on success, FALSE on failure
@@ -888,7 +892,7 @@ Class Reference
 			compatibility with older applications. It is just
 			an alias for the ``mark_as_flash()`` method.
 
-	.. method:: set_flashdata($data[, $value = NULL])
+	.. php:method:: set_flashdata($data[, $value = NULL])
 
 		:param	mixed	$data: An array of key/value pairs to set as flashdata, or the key for a single item
 		:param	mixed	$value:	The value to set for a specific session item, if $data is a key
@@ -900,7 +904,7 @@ Class Reference
 		.. note:: This is a legacy method kept only for backwards
 			compatibility with older applications.
 
-	.. method:: mark_as_temp($key[, $ttl = 300])
+	.. php:method:: mark_as_temp($key[, $ttl = 300])
 
 		:param	mixed	$key: Key to mark as tempdata, or an array of multiple keys
 		:param	int	$ttl: Time-to-live value for the tempdata, in seconds
@@ -910,7 +914,7 @@ Class Reference
 		Marks a ``$_SESSION`` item key (or multiple ones) as
 		"tempdata".
 
-	.. method:: get_temp_keys()
+	.. php:method:: get_temp_keys()
 
 		:returns:	Array containing the keys of all "tempdata" items.
 		:rtype:	array
@@ -918,7 +922,7 @@ Class Reference
 		Gets a list of all ``$_SESSION`` that have been marked as
 		"tempdata".
 
-	.. method:: umark_temp($key)
+	.. php:method:: umark_temp($key)
 
 		:param	mixed	$key: Key to be un-marked as tempdata, or an array of multiple keys
 		:rtype:	void
@@ -926,7 +930,7 @@ Class Reference
 		Unmarks a ``$_SESSION`` item key (or multiple ones) as
 		"tempdata".
 
-	.. method:: tempdata([$key = NULL])
+	.. php:method:: tempdata([$key = NULL])
 
 		:param	mixed	$key: Tempdata item key or NULL
 		:returns:	Value of the specified item key, or an array of all tempdata
@@ -940,7 +944,7 @@ Class Reference
 			compatibility with older applications. You should
 			directly access ``$_SESSION`` instead.
 
-	.. method:: set_tempdata($data[, $value = NULL])
+	.. php:method:: set_tempdata($data[, $value = NULL])
 
 		:param	mixed	$data: An array of key/value pairs to set as tempdata, or the key for a single item
 		:param	mixed	$value:	The value to set for a specific session item, if $data is a key
@@ -953,7 +957,7 @@ Class Reference
 		.. note:: This is a legacy method kept only for backwards
 			compatibility with older applications.
 
-	.. method:: sess_regenerate([$destroy = FALSE])
+	.. php:method:: sess_regenerate([$destroy = FALSE])
 
 		:param	bool	$destroy: Whether to destroy session data
 		:rtype:	void
@@ -965,7 +969,7 @@ Class Reference
 			`session_regenerate_id()
 			<http://php.net/session_regenerate_id>`_ function.
 
-	.. method:: sess_destroy()
+	.. php:method:: sess_destroy()
 
 		:rtype:	void
 
@@ -979,7 +983,7 @@ Class Reference
 			`session_destroy()
 			<http://php.net/session_destroy>`_ function.
 
-	.. method:: __get($key)
+	.. php:method:: __get($key)
 
 		:param	string	$key: Session item key
 		:returns:	The requested session data item, or NULL if it doesn't exist
@@ -993,7 +997,7 @@ Class Reference
 		``session_id()`` if you try to access
 		``$this->session->session_id``.
 
-	.. method:: __set($key, $value)
+	.. php:method:: __set($key, $value)
 
 		:param	string	$key: Session item key
 		:param	mixed	$value: Value to assign to the session item key

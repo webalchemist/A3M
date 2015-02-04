@@ -58,7 +58,7 @@ class Settings extends CI_Controller
 			}
 			
 			$this->Account_details_model->update($data['account']->id, array('picture' => NULL));
-			redirect('account/profile');
+			redirect('account/settings');
 		}
 		
 		// Split date of birth into month, day and year

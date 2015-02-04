@@ -202,6 +202,8 @@ class Authentication
 			//redirect to password page
 			redirect(base_url('account/password/'));
 		}
+                
+                //implement remember me functionality
 		
 		// Redirect signed in user with session redirect
 		if ($redirect = $this->CI->session->userdata('sign_in_redirect'))

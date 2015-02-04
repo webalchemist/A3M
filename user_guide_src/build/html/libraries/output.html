@@ -1,74 +1,255 @@
+
+
 <!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Output Class &mdash; CodeIgniter 3.0-dev documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="CodeIgniter 3.0-dev documentation" href="../index.html"/>
+        <link rel="up" title="Libraries" href="index.html"/>
+        <link rel="next" title="Pagination Class" href="pagination.html"/>
+        <link rel="prev" title="Migrations Class" href="migration.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Downloading CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Upgrading From a Previous Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">CodeIgniter Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">CodeIgniter at a Glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Supported Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Application Flow Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Architectural Goals</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Static pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">News section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Create news items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/reserved_names.html">Reserved Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/libraries.html">Using CodeIgniter Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_libraries.html">Creating Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/drivers.html">Using CodeIgniter Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/creating_drivers.html">Creating Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Creating Core System Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ancillary_classes.html">Creating Ancillary Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/hooks.html">Hooks - Extending the Framework Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/autoloader.html">Auto-loading Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Common Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/compatibility_functions.html">Compatibility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">URI Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Running via the CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Managing your Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Handling Multiple Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Alternate PHP Syntax for View Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/styleguide.html">PHP Style Guide</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Libraries</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmarking Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendaring Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cart.html">Shopping Cart Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypt.html">Encrypt Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">Input Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Language Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loader.html">Loader Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migrations Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Output Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">HTML Table Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trackback.html">Trackback Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">Typography Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Database Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Quick Start: Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Database Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Connecting to a Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Running Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Generating Query Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Query Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Query Builder Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Getting MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Custom Function Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Query Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Database Manipulation with Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Database Utilities Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Database Driver Reference</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Array Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">CAPTCHA Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Date Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Directory Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Download Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Email Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">File Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Form Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Language Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Number Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Path Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Security Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Smiley Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">String Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Text Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Typography Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">XML Helper</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CodeIgniter</a>
+      </nav>
 
 
-<html>
-	<head>
-		<meta charset="utf-8">
-	    
-	    <title>Output Class &mdash; CodeIgniter 3.0-dev documentation</title>
-
-	    <link rel="stylesheet" href="../_static/asset/css/common.css" type="text/css" />
-	    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-	    <script type="text/javascript">
-	      var DOCUMENTATION_OPTIONS = {
-	        URL_ROOT:    '../',
-	        VERSION:     '3.0-dev',
-	        COLLAPSE_INDEX: false,
-	        FILE_SUFFIX: '.html',
-	        HAS_SOURCE:  false
-	      };
-	    </script>
-	    <script type="text/javascript" src="../_static/jquery.js"></script>
-	    <script type="text/javascript" src="../_static/underscore.js"></script>
-	    <script type="text/javascript" src="../_static/doctools.js"></script>
-
-	    <script type="text/javascript" src="../_static/asset/js/method-toc.js"></script>
-	    <link rel="top" title="CodeIgniter 3.0-dev documentation" href="../index.html" />
-	    <link rel="up" title="Libraries" href="index.html" />
-	    <link rel="next" title="Pagination Class" href="pagination.html" />
-	    <link rel="prev" title="Migrations Class" href="migration.html" /> 
-	</head>
-	<body>
-		<div id="table-contents">
-			<div class="toctree-wrapper compound">
-			<function <lambda> at 0x2b90db9aded8>
-			</div>
-		</div>
-
-		<div id="brand" class="ci">
-			<a href="http://codeigniter.com/"><img src="../_static/asset/img/ci-logo.gif" alt="CodeIgniter"></a>
-			<p>3.0-dev User Guide</p>
-		</div><!-- /#brand -->
-
-		<div id="header"><!--
-	--------------------------------
-	Original Google search box block
-	--------------------------------
-	
-<form method="get" action="http://www.google.com/search">
-	<fieldset>
-		<input type="text" name="q" id="q" value="">
-		<input type="hidden" name="as_sitesearch" id="as_sitesearch" value="codeigniter.com/user_guide/" />
-		<input class="grades" type="submit" value="search">
-	</fieldset>
-</form>
--->
-
-
-<form class="search" action="../search.html" method="get">
-  <input type="text" name="q" id="q" value="" />
-  <input type="submit" value="search" />
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-			<ul>
-				<li><a href="../index.html">User Guide Home</a>&nbsp;&nbsp; &rsaquo;</li>
-				<li><a href="index.html" accesskey="U">Libraries</a>&nbsp;&nbsp;  &rsaquo;</li>
-				<li><strong>Output Class</strong></li>
-			</ul>
-		</div><!-- /#header -->
-
-		<div class="section body" id="content">
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Libraries</a> &raquo;</li>
+      
+    <li>Output Class</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="output-class">
 <h1>Output Class<a class="headerlink" href="#output-class" title="Permalink to this headline">¶</a></h1>
 <p>The Output class is a core class with one main function: To send the
@@ -109,17 +290,22 @@ this property to FALSE in your controller.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.set_output">
-<tt class="descname">set_output</tt><big>(</big><em>$output</em><big>)</big><a class="headerlink" href="#CI_Output.set_output" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::set_output">
+<tt class="descname">set_output</tt><big>(</big><em>$output</em><big>)</big><a class="headerlink" href="#CI_Output::set_output" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$output</strong> (<em>string</em>) &#8211; String to set the output to</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$output</strong> (<em>string</em>) &#8211; String to set the output to</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CI_Output instance (method chaining)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_Output instance (method chaining)</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CI_Output</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_Output</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -136,8 +322,8 @@ of your controller methods, don&#8217;t set the output until the end.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.set_content_type">
-<tt class="descname">set_content_type</tt><big>(</big><em>$mime_type</em><span class="optional">[</span>, <em>$charset = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output.set_content_type" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::set_content_type">
+<tt class="descname">set_content_type</tt><big>(</big><em>$mime_type</em><span class="optional">[</span>, <em>$charset = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output::set_content_type" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -178,8 +364,8 @@ exists in <em>application/config/mimes.php</em> or it will have no effect.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.get_content_type">
-<tt class="descname">get_content_type</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Output.get_content_type" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::get_content_type">
+<tt class="descname">get_content_type</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Output::get_content_type" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -201,17 +387,22 @@ exists in <em>application/config/mimes.php</em> or it will have no effect.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.get_header">
-<tt class="descname">get_header</tt><big>(</big><em>$header</em><big>)</big><a class="headerlink" href="#CI_Output.get_header" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::get_header">
+<tt class="descname">get_header</tt><big>(</big><em>$header</em><big>)</big><a class="headerlink" href="#CI_Output::get_header" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$header</strong> (<em>string</em>) &#8211; HTTP header name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$header</strong> (<em>string</em>) &#8211; HTTP header name</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">HTTP response header or NULL if not found</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HTTP response header or NULL if not found</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">mixed</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -233,8 +424,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.get_output">
-<tt class="descname">get_output</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Output.get_output" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::get_output">
+<tt class="descname">get_output</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Output::get_output" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -256,17 +447,22 @@ functions like <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.append_output">
-<tt class="descname">append_output</tt><big>(</big><em>$output</em><big>)</big><a class="headerlink" href="#CI_Output.append_output" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::append_output">
+<tt class="descname">append_output</tt><big>(</big><em>$output</em><big>)</big><a class="headerlink" href="#CI_Output::append_output" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$output</strong> (<em>string</em>) &#8211; Additional output data to append</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$output</strong> (<em>string</em>) &#8211; Additional output data to append</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CI_Output instance (method chaining)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_Output instance (method chaining)</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CI_Output</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_Output</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -277,8 +473,8 @@ functions like <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.set_header">
-<tt class="descname">set_header</tt><big>(</big><em>$header</em><span class="optional">[</span>, <em>$replace = TRUE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output.set_header" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::set_header">
+<tt class="descname">set_header</tt><big>(</big><em>$header</em><span class="optional">[</span>, <em>$replace = TRUE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output::set_header" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -310,8 +506,8 @@ send for you when outputting the final rendered display. Example:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.set_status_header">
-<tt class="descname">set_status_header</tt><big>(</big><span class="optional">[</span><em>$code = 200</em><span class="optional">[</span>, <em>$text = ''</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output.set_status_header" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::set_status_header">
+<tt class="descname">set_status_header</tt><big>(</big><span class="optional">[</span><em>$code = 200</em><span class="optional">[</span>, <em>$text = ''</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output::set_status_header" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -339,22 +535,27 @@ send for you when outputting the final rendered display. Example:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This method is an alias for <a class="reference internal" href="../general/common_functions.html"><em>Common function</em></a>
-<a class="reference internal" href="../general/common_functions.html#set_status_header" title="set_status_header"><tt class="xref py py-func docutils literal"><span class="pre">set_status_header()</span></tt></a>.</p>
+<tt class="xref py py-func docutils literal"><span class="pre">set_status_header()</span></tt>.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.enable_profiler">
-<tt class="descname">enable_profiler</tt><big>(</big><span class="optional">[</span><em>$val = TRUE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output.enable_profiler" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::enable_profiler">
+<tt class="descname">enable_profiler</tt><big>(</big><span class="optional">[</span><em>$val = TRUE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output::enable_profiler" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$val</strong> (<em>bool</em>) &#8211; Whether to enable or disable the Profiler</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$val</strong> (<em>bool</em>) &#8211; Whether to enable or disable the Profiler</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CI_Output instance (method chaining)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_Output instance (method chaining)</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CI_Output</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_Output</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -373,17 +574,22 @@ and other data at the bottom of your pages for debugging and optimization purpos
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.set_profiler_sections">
-<tt class="descname">set_profiler_sections</tt><big>(</big><em>$sections</em><big>)</big><a class="headerlink" href="#CI_Output.set_profiler_sections" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::set_profiler_sections">
+<tt class="descname">set_profiler_sections</tt><big>(</big><em>$sections</em><big>)</big><a class="headerlink" href="#CI_Output::set_profiler_sections" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$sections</strong> (<em>array</em>) &#8211; Profiler sections</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sections</strong> (<em>array</em>) &#8211; Profiler sections</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CI_Output instance (method chaining)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_Output instance (method chaining)</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CI_Output</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_Output</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -392,17 +598,22 @@ Please refer to the <a class="reference internal" href="../general/profiling.htm
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output.cache">
-<tt class="descname">cache</tt><big>(</big><em>$time</em><big>)</big><a class="headerlink" href="#CI_Output.cache" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::cache">
+<tt class="descname">cache</tt><big>(</big><em>$time</em><big>)</big><a class="headerlink" href="#CI_Output::cache" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$time</strong> (<em>int</em>) &#8211; Cache expiration time in seconds</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$time</strong> (<em>int</em>) &#8211; Cache expiration time in seconds</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CI_Output instance (method chaining)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_Output instance (method chaining)</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">CI_Output</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_Output</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -411,17 +622,22 @@ Please refer to the <a class="reference internal" href="../general/profiling.htm
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Output._display">
-<tt class="descname">_display</tt><big>(</big><span class="optional">[</span><em>$output = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output._display" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Output::_display">
+<tt class="descname">_display</tt><big>(</big><span class="optional">[</span><em>$output = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Output::_display" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>$output</strong> (<em>string</em>) &#8211; Output data override</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$output</strong> (<em>string</em>) &#8211; Output data override</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">void</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -432,19 +648,17 @@ timers.</p>
 <p class="last">This method is called automatically at the end of script execution, you won&#8217;t need to
 call it manually unless you are aborting script execution using <tt class="docutils literal"><span class="pre">exit()</span></tt> or <tt class="docutils literal"><span class="pre">die()</span></tt> in your code.</p>
 </div>
-<dl class="docutils">
-<dt>Example::</dt>
-<dd><p class="first">$response = array(&#8216;status&#8217; =&gt; &#8216;OK&#8217;);</p>
-<dl class="docutils">
-<dt>$this-&gt;output</dt>
-<dd>-&gt;set_status_header(200)
--&gt;set_content_type(&#8216;application/json&#8217;, &#8216;utf-8&#8217;)
--&gt;set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
--&gt;_display();</dd>
-</dl>
-<p class="last">exit;</p>
-</dd>
-</dl>
+<p>Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">output</span>
+        <span class="o">-&gt;</span><span class="na">set_status_header</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">set_content_type</span><span class="p">(</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">set_output</span><span class="p">(</span><span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">,</span> <span class="nx">JSON_PRETTY_PRINT</span> <span class="o">|</span> <span class="nx">JSON_UNESCAPED_UNICODE</span> <span class="o">|</span> <span class="nx">JSON_UNESCAPED_SLASHES</span><span class="p">))</span>
+        <span class="o">-&gt;</span><span class="na">_display</span><span class="p">();</span>
+<span class="k">exit</span><span class="p">;</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Calling this method manually without aborting script execution will result in duplicated output.</p>
@@ -457,13 +671,70 @@ call it manually unless you are aborting script execution using <tt class="docut
 </div>
 
 
-		</div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pagination.html" class="btn btn-neutral float-right" title="Pagination Class">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration.html" class="btn btn-neutral" title="Migrations Class"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-		<!-- {user_guide_comments} -->
-		
-		<div id="footer">
-			<p class="top"><a href="#header" title="Return to top">Return to top</a></p>
-			<p><a href="http://codeigniter.com/">CodeIgniter</a> &ndash; Copyright &copy; 2014, EllisLab, Inc.</a></p>
-		</div><!-- /#footer -->
-	</body>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2015, British Columbia Institute of Technology.
+      Last updated on Feb 03, 2015.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

@@ -14,7 +14,7 @@
  */
 class Hybrid_Auth 
 {
-	public static $version = "2.3.0-dev";
+	public static $version = "2.3.0";
 
 	public static $config  = array();
 
@@ -376,6 +376,10 @@ class Hybrid_Auth
 	*/
 	public static function getCurrentUrl( $request_uri = true ) 
 	{
+		if (php_sapi_name() == 'cli') {
+			return '';
+		}
+		
 		if(
 			isset( $_SERVER['HTTPS'] ) && ( $_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1 )
 		|| 	isset( $_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
@@ -387,14 +391,6 @@ class Hybrid_Auth
 		}
 
 		$url = $protocol . $_SERVER['HTTP_HOST'];
-
-		// use port if non default
-		if( isset( $_SERVER['SERVER_PORT'] ) && strpos( $url, ':'.$_SERVER['SERVER_PORT'] ) === FALSE ) {
-			$url .= ($protocol === 'http://' && $_SERVER['SERVER_PORT'] != 80 && !isset( $_SERVER['HTTP_X_FORWARDED_PROTO']))
-				|| ($protocol === 'https://' && $_SERVER['SERVER_PORT'] != 443 && !isset( $_SERVER['HTTP_X_FORWARDED_PROTO']))
-				? ':' . $_SERVER['SERVER_PORT'] 
-				: '';
-		}
 
 		if( $request_uri ){
 			$url .= $_SERVER['REQUEST_URI'];

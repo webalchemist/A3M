@@ -42,8 +42,8 @@ class Rel_account_role_model extends CI_Model
   {
     $this->db->select($this->db->dbprefix . 'a3m_acl_role.*');
     $this->db->from($this->db->dbprefix . 'a3m_rel_account_role');
-    $this->db->join($this->db->dbprefix . 'a3m_acl_role', $this->db->dbprefix . 'a3m_rel_account_role_model.role_id = '.$this->db->dbprefix . 'a3m_acl_role.id');
-    $this->db->where($this->db->dbprefix . "a3m_rel_account_role_model.account_id = $account_id AND ".$this->db->dbprefix . "a3m_acl_role.suspendedon IS NULL");
+    $this->db->join($this->db->dbprefix . 'a3m_acl_role', $this->db->dbprefix . 'a3m_rel_account_role.role_id = '.$this->db->dbprefix . 'a3m_acl_role.id');
+    $this->db->where($this->db->dbprefix . "a3m_rel_account_role.account_id = $account_id AND ".$this->db->dbprefix . "a3m_acl_role.suspendedon IS NULL");
 
     return $this->db->get()->result();
   }

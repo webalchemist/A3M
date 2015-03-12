@@ -21,6 +21,8 @@ class Authorization
    * @var object
    */
   var $CI;
+  
+  private $_account_permissions_cache = array();
 
   /**
    * Constructor
@@ -57,7 +59,15 @@ class Authorization
 
     $this->CI->load->model('account/Acl_permission_model');
 
-    $account_permissions = $this->CI->Acl_permission_model->get_by_account_id($account_id);
+    if (isset($this->_account_permissions_cache[$account_id]))
+    {
+        $account_permissions = $this->_account_permissions_cache[$account_id];
+    }
+    else
+    {
+        $account_permissions = $this->CI->Acl_permission_model->get_by_account_id($account_id);
+        $this->_account_permissions_cache[$account_id] = $account_permissions;
+    }
 
     // Loop through and check if the account 
     // has any of the permission keys supplied

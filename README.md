@@ -1,9 +1,10 @@
 A3M
-=== 
+===
+[![Join the chat at https://gitter.im/donjakobo/A3M](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/donjakobo/A3M?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-A3M (Account Authentication & Authorization) is a CodeIgniter 2.x and 3-dev package that leverages bleeding edge web technologies 
-like OpenID and OAuth to create a user-friendly user experience. It gives you the CRUD to get working right away 
-without too much fuss and tinkering! Designed for building webapps from scratch without all that tiresome 
+A3M (Account Authentication & Authorization) is a CodeIgniter 2.x and 3-dev package that leverages bleeding edge web technologies
+like OpenID and OAuth to create a user-friendly user experience. It gives you the CRUD to get working right away
+without too much fuss and tinkering! Designed for building webapps from scratch without all that tiresome
 login / logout / admin stuff thats always required.
 
 ## Original Authors
@@ -37,14 +38,14 @@ login / logout / admin stuff thats always required.
 
 * [recaptcha_pi.php](http://code.google.com/p/recaptcha/) - recaptcha-php-1.11
 * [HybridAuth](https://github.com/hybridauth/hybridauth/) - v.2.2.1
-* [phpass_pi.php](http://www.openwall.com/phpass/) - Version 0.3 / genuine _(latest)_ 
+* [phpass_pi.php](http://www.openwall.com/phpass/) - Version 0.3 / genuine _(latest)_
 * [gravatar.php](https://github.com/rsmarshall/Codeigniter-Gravatar) - codeigniter (6/6/2014) rls
 
 ## Dependencies
 
 * PHP 5.3
 * CURL
-* DOM or domxml 
+* DOM or domxml
 * GMP or Bcmatch
 
 ## Installation Instructions
@@ -52,7 +53,6 @@ Check out our wiki: https://github.com/donjakobo/A3M/wiki/Installation-Instructi
 for help on getting started.
 
 ## Help and Support  
-* Found a bug? Try forking and fixing it. 
+* Found a bug? Try forking and fixing it.
 * Open an issue if you want to discuss/highlight it
 * Go to StackOverflow under the tag `codeigniter-a3m` http://stackoverflow.com/questions/tagged/codeigniter-a3m if you have implementation issues (installation problems, etc;)
-

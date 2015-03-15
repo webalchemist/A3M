@@ -630,7 +630,7 @@ time-to-live value of 300 seconds (or 5 minutes) will be used.</p>
 <p class="first admonition-title">Important</p>
 <p class="last">The <tt class="docutils literal"><span class="pre">userdata()</span></tt> method will NOT return tempdata items.</p>
 </div>
-<p>Or if you want to be sure that you&#8217;re reading &#8220;flashdata&#8221; (and not any
+<p>Or if you want to be sure that you&#8217;re reading &#8220;tempdata&#8221; (and not any
 other kind), you can also use the <tt class="docutils literal"><span class="pre">tempdata()</span></tt> method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">tempdata</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">);</span>
 </pre></div>
@@ -705,10 +705,10 @@ all of the options and their effects.</p>
 <strong>application/config/config.php</strong> file:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="14%" />
+<col width="16%" />
 <col width="9%" />
 <col width="23%" />
-<col width="54%" />
+<col width="53%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Preference</th>
@@ -739,18 +739,24 @@ If you would like a non-expiring session (until browser is closed) set the value
 <td>None</td>
 <td>Specifies the storage location, depends on the driver being used.</td>
 </tr>
-<tr class="row-even"><td><strong>sess_time_to_update</strong></td>
-<td>300</td>
-<td>Time in seconds (integer)</td>
-<td>This option controls how often the session class will regenerate itself and create a new
-session ID. Setting it to 0 will disable session ID regeneration.</td>
-</tr>
-<tr class="row-odd"><td><strong>sess_match_ip</strong></td>
+<tr class="row-even"><td><strong>sess_match_ip</strong></td>
 <td>FALSE</td>
 <td>TRUE/FALSE (boolean)</td>
 <td>Whether to validate the user&#8217;s IP address when reading the session cookie.
 Note that some ISPs dynamically changes the IP, so if you want a non-expiring session you
 will likely set this to FALSE.</td>
+</tr>
+<tr class="row-odd"><td><strong>sess_time_to_update</strong></td>
+<td>300</td>
+<td>Time in seconds (integer)</td>
+<td>This option controls how often the session class will regenerate itself and create a new
+session ID. Setting it to 0 will disable session ID regeneration.</td>
+</tr>
+<tr class="row-even"><td><strong>sess_regenerate_destroy</strong></td>
+<td>FALSE</td>
+<td>TRUE/FALSE (boolean)</td>
+<td>Whether to destroy session data associated with the old session ID when auto-regenerating
+the session ID. When set to FALSE, the data will be later deleted by the garbage collector.</td>
 </tr>
 </tbody>
 </table>
@@ -913,7 +919,7 @@ removed in the future.</p>
         <span class="sb">`id`</span> <span class="nx">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
         <span class="sb">`ip_address`</span> <span class="nx">varchar</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
         <span class="sb">`timestamp`</span> <span class="nx">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="nx">unsigned</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-        <span class="sb">`data`</span> <span class="nx">blob</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+        <span class="sb">`data`</span> <span class="nx">blob</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
         <span class="nx">PRIMARY</span> <span class="nx">KEY</span> <span class="p">(</span><span class="nx">id</span><span class="p">),</span>
         <span class="nx">KEY</span> <span class="sb">`ci_sessions_timestamp`</span> <span class="p">(</span><span class="sb">`timestamp`</span><span class="p">)</span>
 <span class="p">);</span>
@@ -950,6 +956,12 @@ issues.</p>
 </div>
 <div class="section" id="redis-driver">
 <h4><a class="toc-backref" href="#id20">Redis Driver</a><a class="headerlink" href="#redis-driver" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since Redis doesn&#8217;t have a locking mechanism exposed, locks for
+this driver are emulated by a separate value that is kept for up
+to 300 seconds.</p>
+</div>
 <p>Redis is a storage engine typically used for caching and popular because
 of its high performance, which is also probably your reason to use the
 &#8216;redis&#8217; session driver.</p>
@@ -982,6 +994,12 @@ sufficient:</p>
 </div>
 <div class="section" id="memcached-driver">
 <h4><a class="toc-backref" href="#id21">Memcached Driver</a><a class="headerlink" href="#memcached-driver" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since Memcache doesn&#8217;t have a locking mechanism exposed, locks
+for this driver are emulated by a separate value that is kept for
+up to 300 seconds.</p>
+</div>
 <p>The &#8216;memcached&#8217; driver is very similar to the &#8216;redis&#8217; one in all of its
 properties, except perhaps for availability, because PHP&#8217;s <a class="reference external" href="http://php.net/memcached">Memcached</a> extension is distributed via PECL and some
 Linux distrubutions make it available as an easy to install package.</p>
@@ -1676,7 +1694,7 @@ properties:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2015, British Columbia Institute of Technology.
-      Last updated on Feb 04, 2015.
+      Last updated on Mar 09, 2015.
     </p>
   </div>
 

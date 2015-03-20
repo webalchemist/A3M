@@ -38,5 +38,21 @@ $lang['connect_proceed'] = 'Proceed';
 
 $lang['connect_cant_authenticate'] = "Cannot authenticate user";
 
+//HybridAuth errors
+$lang['connect_hybrid_error_unexpected'] = "Unexpected error";
+$lang['connect_hybrid_error_unspecified'] = "Unspecified error";
+$lang['connect_hybrid_error_config'] = "Hybriauth configuration error.";
+$lang['connect_hybrid_error_providers_config'] = "Provider not properly configured.";
+$lang['connect_hybrid_error_provider_unknown'] = "Unknown or disabled provider.";
+$lang['connect_hybrid_error_provider_credentials'] = "Missing provider application credentials.";
+$lang['connect_hybrid_error_provider_unknown'] = "Unknown or disabled provider.";
+$lang['connect_hybrid_error_provider_profile'] = 'User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.';
+$lang['connect_hybrid_error_provider_user_not_connected'] = "User not connected to the provider.";
+$lang['connect_hybrid_error_show'] = "Error authenticating user.";
+$lang['connect_hybrid_error_logout'] = "controllers.HAuth.login: logging out from service.";
+$lang['connect_hybrid_error_cancelled'] = "User has cancelled the authentication or the provider refused the connection.";
+$lang['connect_hybrid_error_fail_cancelled_refused'] = "controllers.HAuth.login: Authentification failed. The user has canceled the authentication or the provider refused the connection.";
+$lang['connect_hybrid_error_debug'] = "controllers.HAuth.login: ";
+
 /* End of file connect_third_party_lang.php */
 /* Location: ./application/language/english/account/connect_third_party_lang.php */

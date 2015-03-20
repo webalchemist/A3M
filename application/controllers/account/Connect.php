@@ -131,7 +131,7 @@ class Connect extends CI_Controller
         else // Cannot authenticate user
         {
           //@todo show a custom error page or put text into the lang file?
-          show_error('Cannot authenticate user');
+          show_error(lang('connect_cant_authenticate'));
         }
       }
 	    else

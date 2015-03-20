@@ -36,7 +36,7 @@ $lang['connect_openid_url'] = 'OpenID URL';
 $lang['connect_start_what_is_openid'] = 'What is OpenID?';
 $lang['connect_proceed'] = 'Proceed';
 
-$lang['connect_email_subject'] = "Your account at %s";
+$lang['connect_cant_authenticate'] = "Cannot authenticate user";
 
 /* End of file connect_third_party_lang.php */
 /* Location: ./application/language/english/account/connect_third_party_lang.php */

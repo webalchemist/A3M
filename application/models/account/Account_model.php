@@ -25,7 +25,7 @@ class Account_model extends CI_Model
 	{
 		parent::__construct();
 	}
-	
+
 	/**
 	 * Get all accounts
 	 *
@@ -101,7 +101,7 @@ class Account_model extends CI_Model
 	 * @access public
 	 * @param string $username
 	 * @param string $email
--	 * @param string $password Password in plain. Will be hashed before inserted into DB
+	 * @param string $password Password in plain. Will be hashed before inserted into DB
 	 * @return int insert id
 	 */
 	function create($username, $email = NULL, $password = NULL)
@@ -260,7 +260,7 @@ class Account_model extends CI_Model
 
 		$this->db->update($this->db->dbprefix . 'a3m_account', array('suspendedon' => mdate('%Y-%m-%d %H:%i:%s', now())), array('id' => $account_id));
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -274,12 +274,12 @@ class Account_model extends CI_Model
 	{
 		$this->db->update($this->db->dbprefix . 'a3m_account', array('suspendedon' => NULL), array('id' => $account_id));
 	}
-	
+
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Verify user
-	 * 
+	 *
 	 * @access public
 	 * @param int $account_id
 	 * @return boolean
@@ -287,19 +287,19 @@ class Account_model extends CI_Model
 	function verify($account_id)
 	{
 		$this->load->helper('date');
-		
+
 		$this->db->update('a3m_account', array('verifiedon' => mdate('%Y-%m-%d %H:%i:%s', now())), array('id' => $account_id));
-		
+
 		if($this->db->affected_rows() === 1)
 		{
 			return TRUE;
 		}
-		
+
 		return FALSE;
 	}
-	
+
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Changes the force reset parameter in the DB
 	 * @param int $account_id
@@ -309,12 +309,12 @@ class Account_model extends CI_Model
 	public function force_reset_password($account_id, $action)
 	{
 		$this->db->update($this->db->dbprefix . 'a3m_account', array('forceresetpass' => $action), array('id' => $account_id));
-		
+
 		if($this->db->affected_rows() === 1)
 		{
 			return TRUE;
 		}
-		
+
 		return FALSE;
 	}
 }

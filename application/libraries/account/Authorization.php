@@ -61,7 +61,7 @@ class Authorization
 
     $permissions = $this->CI->Acl_permission_model->get_by_account_id($account_id);
     foreach ($permissions as $perm) {
-        $account_permissions[] = strtolower($perm->key);
+        $account_permissions[] = $perm->key;
     }
 
     // Loop through and check if the account 
@@ -72,8 +72,6 @@ class Authorization
         {
             $permission_keys = [$permission_keys];
         }
-
-        $permission_keys = array_map('strtolower', $permission_keys);
 
         $permitted = array_intersect($permission_keys, $account_permissions);
         if ($require_all)

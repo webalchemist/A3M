@@ -66,7 +66,7 @@ class Authorization
         $this->_account_permissions_cache[$account_id] = $account_permissions;
         foreach ($permissions as $perm)
         {
-            $account_permissions[] = strtolower($perm->key);
+            $account_permissions[] = $perm->key;
         }
     }
 
@@ -78,8 +78,6 @@ class Authorization
         {
             $permission_keys = [$permission_keys];
         }
-
-        $permission_keys = array_map('strtolower', $permission_keys);
 
         $permitted = array_intersect($permission_keys, $account_permissions);
         if ($require_all)

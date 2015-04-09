@@ -61,62 +61,37 @@ class Authorization
     }
     else
     {
-        $account_permissions = $this->CI->Acl_permission_model->get_by_account_id($account_id);
+        $account_permissions = array();
+        $permissions = $this->CI->Acl_permission_model->get_by_account_id($account_id);
         $this->_account_permissions_cache[$account_id] = $account_permissions;
+        foreach ($permissions as $perm)
+        {
+            $account_permissions[] = $perm->key;
+        }
     }
 
     // Loop through and check if the account
     // has any of the permission keys supplied
     if (isset($permission_keys))
     {
-      foreach ($account_permissions as $perm)
-      {
-        // Array of permission keys
-        if (is_array($permission_keys))
+        if ( ! is_array($permission_keys))
         {
-          foreach($permission_keys as $key)
-          {
-            // Return if only a single one is required.
-            if(strtolower($perm->key) == strtolower($key) && ! $require_all )
-            {
-              return TRUE;
-            }
-            // Only takes one bad apple
-            elseif(strtolower($perm->key) == strtolower($key) && $require_all)
-            {
-              return FALSE;
-            }
-          }
+            $permission_keys = [$permission_keys];
         }
-        // Single permission key
+
+        $permitted = array_intersect($permission_keys, $account_permissions);
+        if ($require_all)
+        {
+            return count($permitted) == count($permission_keys);
+        }
         else
         {
-          // Return if only a single one is required.
-          if (strtolower($perm->key) == strtolower($permission_keys) && ! $require_all )
-          {
-            return TRUE;
-          }
-          // Only takes one bad apple
-          elseif (strtolower($perm->key) != strtolower($permission_keys) && $require_all)
-          {
-            return FALSE;
-          }
+            return count($permitted) > 0;
         }
-      }
+
     }
 
-    // If nothing above matched for single
-    // permission, then this is false.
-    if (! $require_all)
-    {
-      return FALSE;
-    }
-    // If it made this this far and all are
-    // required, then all is fine in the world
-    else
-    {
-      return TRUE;
-    }
+    return FALSE;
   }
 
   // --------------------------------------------------------------------

@@ -28,10 +28,10 @@ class Account_providers_model extends CI_Model
         $this->db->order_by('provider', 'ACS');
         return $this->db->get_where($this->db->dbprefix . 'a3m_providers', array('user_id' => $user_id))->result();
     }
-    
+
     // --------------------------------------------------------------------
-    
-    /*
+
+    /**
      * Gets record by provider uid
      * @param string $provider Provider's name
      * @param string $id ID for the user used by the provider
@@ -41,9 +41,9 @@ class Account_providers_model extends CI_Model
     {
         return $this->db->get_where($this->db->dbprefix . 'a3m_providers', array('provider' => $provider, 'provider_uid' => $id))->row();
     }
-    
+
     // --------------------------------------------------------------------
-    
+
     /**
      * Insert a new record into DB
      * @param int $user_id User id
@@ -63,9 +63,9 @@ class Account_providers_model extends CI_Model
         $this->load->helper('date');
         $this->db->insert($this->db->dbprefix . 'a3m_providers', array('user_id' => $user_id, 'provider' => $provider, 'provider_uid' => $provider_uid, 'email' => $email, 'display_name' => $display_name, 'first_name' => $first_name, 'last_name' => $last_name, 'profile_url' => $profile_url, 'website_url' => $website_url, 'photo_url' => $photo_url, 'created_at' => mdate('%Y-%m-%d %H:%i:%s', now()) ));
     }
-    
+
     // --------------------------------------------------------------------
-    
+
     /**
      * Delete given record from table
      * @param int $user_id

@@ -63,11 +63,11 @@ class Authorization
     {
         $account_permissions = array();
         $permissions = $this->CI->Acl_permission_model->get_by_account_id($account_id);
-        $this->_account_permissions_cache[$account_id] = $account_permissions;
         foreach ($permissions as $perm)
         {
             $account_permissions[] = $perm->key;
         }
+        $this->_account_permissions_cache[$account_id] = $account_permissions;
     }
 
     // Loop through and check if the account

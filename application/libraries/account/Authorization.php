@@ -76,7 +76,7 @@ class Authorization
     {
         if ( ! is_array($permission_keys))
         {
-            $permission_keys = [$permission_keys];
+            $permission_keys = array($permission_keys);
         }
 
         $permitted = array_intersect($permission_keys, $account_permissions);

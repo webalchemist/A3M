@@ -34,9 +34,9 @@
 			<span class="help-inline"><?php echo form_error('sign_in_password'); ?></span>
 		<?php endif; ?>
 
-		<?php if (isset($recaptcha)) : ?>
-			<?php echo $recaptcha; ?>
-			<?php if (isset($sign_in_recaptcha_error)) : ?>
+		<?php if (isset($recaptcha)):
+			echo $recaptcha;
+			if (isset($sign_in_recaptcha_error)): ?>
 				<span class="alert alert-danger"><?php echo $sign_in_recaptcha_error; ?></span>
 			<?php endif; ?>
 		<?php endif; ?>

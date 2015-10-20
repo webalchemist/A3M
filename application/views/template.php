@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+
     <title><?php echo isset($title) ? $title.' - '.lang('website_title') : lang('website_title'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Account Authentication and Authorization">
     <meta name="author" content="A3M contributors">
-    
+
     <base href="<?php echo base_url(); ?>"/>
-    
+
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico"/>
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="resource/js/jquery.min.js"><\/script>');</script>
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(RES_DIR.'/bootstrap/css/bootstrap.min.css'); ?>" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(RES_DIR.'/css/style.css'); ?>"/>
@@ -63,7 +63,7 @@
                                 <?php if ($account->password) : ?>
                                         <li><?php echo anchor('account/password', lang('website_password')); ?></li>
                                 <?php endif; ?>
-                                <li><?php echo anchor('account/linked_accounts', lang('website_linked')); ?></li>    
+                                <li><?php echo anchor('account/linked_accounts', lang('website_linked')); ?></li>
                             <?php if ($this->authorization->is_permitted( array('retrieve_users', 'retrieve_roles', 'retrieve_permissions') )) : ?>
                                 <li class="divider"></li>
                                 <li class="dropdown-header"><?php echo lang('website_admin_panel'); ?></li>
@@ -90,7 +90,7 @@
             <!--/.nav-collapse -->
         </div>
     </nav>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -98,9 +98,9 @@
             </div>
         </div>
     </div>
-    
+
     <div class="clearfix"></div>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

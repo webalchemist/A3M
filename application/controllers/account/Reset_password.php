@@ -32,7 +32,7 @@ class Reset_password extends CI_Controller {
 	/**
 	 * Reset password
 	 *
-	 * Password reset landing after clicking on a link in the 
+	 * Password reset landing after clicking on a link in the
 	 */
 	function index()
 	{
@@ -52,9 +52,9 @@ class Reset_password extends CI_Controller {
 			{
 				$data['reset_password_recaptcha_error'] = $recaptcha_result ? lang('reset_password_recaptcha_incorrect') : lang('reset_password_recaptcha_required');
 			}
-			
+
 			// Load recaptcha code
-			$data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
+			$data['recaptcha'] = $this->recaptcha->load();
 
 			// Load reset password captcha view
 			$data['content'] = $this->load->view('account/reset_password_captcha', isset($data) ? $data : NULL, TRUE);

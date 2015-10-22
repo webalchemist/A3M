@@ -85,10 +85,10 @@ class Sign_up extends CI_Controller
 
 				// Create user
 				$user_id = $this->Account_model->create($this->input->post('sign_up_username', TRUE), $this->input->post('sign_up_email', TRUE), $this->input->post('sign_up_password', TRUE));
-		
+
 				// Add user details (auto detected country, language, timezone)
 				$this->Account_details_model->update($user_id);
-				
+
 				// Assigns user role
 				$this->load->model('account/Rel_account_role_model');
 				$this->Rel_account_role_model->update($user_id, $this->config->item("sign_up_default_user_group"));
@@ -99,13 +99,13 @@ class Sign_up extends CI_Controller
 					//send authentication email
 					$account = $this->Account_model->get_by_id($user_id);
 					$authentication_url = site_url('account/validate?user_id=' . $user_id . '&token='. sha1($user_id . $account->createdon . $this->config->item('password_reset_secret')));
-					
+
 					// Load email library
 					$this->load->library('email');
-					
+
 					// Initialise email lib
 					$this->email->initialize(array('mailtype' => 'html'));
-					
+
 					// Send the authentication email
 					$this->email->from($this->config->item('account_email_confirm_sender'), lang('website_title'));
 					$this->email->to($account->email);
@@ -121,7 +121,7 @@ class Sign_up extends CI_Controller
 							// Run sign in routine
 							$this->authentication->sign_in($this->input->post('sign_up_username', TRUE), $this->input->post('sign_up_password', TRUE), $this->input->post('sign_in_remember', TRUE));
 						}
-						
+
 						// Load confirmation view
 						$data['content'] = $this->load->view('account/account_validation_send', isset($data) ? $data : NULL, TRUE);
 						$this->load->view('template', $data);
@@ -138,7 +138,7 @@ class Sign_up extends CI_Controller
                                                         log_message('error', $this->email->print_debugger());
 						}
 					}
-					
+
 					return;
 				}
 				else
@@ -150,14 +150,16 @@ class Sign_up extends CI_Controller
 					}
 					redirect('account/sign_in');
 				}
-				
+
 			}
 		}
 		else
 		{
 			// Load recaptcha code
-			if ($this->config->item("sign_up_recaptcha_enabled") === TRUE) if ($this->session->userdata('sign_up_recaptcha_pass') != TRUE) $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
-			
+			if ($this->config->item("sign_up_recaptcha_enabled") === TRUE) if ($this->session->userdata('sign_up_recaptcha_pass') != TRUE){
+				$data['recaptcha'] = $this->recaptcha->load();
+			}
+
 			// Load sign up view
 			$data['content'] = $this->load->view('sign_up', isset($data) ? $data : NULL, TRUE);
 			$this->load->view('template', $data);

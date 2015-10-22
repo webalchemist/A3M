@@ -99,8 +99,9 @@ class Sign_in extends CI_Controller
 
 		// Load recaptcha code
 		if ($this->config->item("sign_in_recaptcha_enabled") === TRUE)
-			if ($this->config->item('sign_in_recaptcha_offset') <= $this->session->userdata('sign_in_failed_attempts'))
-				$data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
+			if ($this->config->item('sign_in_recaptcha_offset') <= $this->session->userdata('sign_in_failed_attempts')){
+				$data['recaptcha'] = $this->recaptcha->load();
+			}
 
 		// Load sign in view
 		$data['content'] = $this->load->view('sign_in', isset($data) ? $data : NULL, TRUE);

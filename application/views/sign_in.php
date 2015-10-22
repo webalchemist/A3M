@@ -13,11 +13,11 @@
 	    <label class="control-label col-lg-2" for="sign_in_username_email"><?php echo lang('sign_in_username_email'); ?></label>
 
 	    <div class="col-lg-10">
-			<?php echo form_input(array('name' => 'sign_in_username_email', 'id' => 'sign_in_username_email', 'value' => set_value('sign_in_username_email'), 'maxlength' => '24', 'class' => 'form-control')); ?>
-			<?php if (form_error('sign_in_username_email') || isset($sign_in_username_email_error)) :?>
+			<?php echo form_input(array('name' => 'sign_in_username_email', 'id' => 'sign_in_username_email', 'value' => set_value('sign_in_username_email'), 'maxlength' => '24', 'class' => 'form-control'));
+			if (form_error('sign_in_username_email') || isset($sign_in_username_email_error)) :?>
 	<span class="help-inline">
-			<?php echo form_error('sign_in_username_email'); ?>
-				<?php if (isset($sign_in_username_email_error)) : ?>
+			<?php echo form_error('sign_in_username_email');
+				if (isset($sign_in_username_email_error)) : ?>
 		<span class="alert alert-danger"><?php echo $sign_in_username_email_error; ?></span>
 				<?php endif; ?>
 			</span>
@@ -29,8 +29,8 @@
 	    <label class="control-label col-lg-2" for="sign_in_password"><?php echo lang('sign_in_password'); ?></label>
 
 	    <div class="col-lg-10">
-		<?php echo form_password(array('name' => 'sign_in_password', 'id' => 'sign_in_password', 'value' => set_value('sign_in_password'), 'class' => 'form-control')); ?>
-		<?php if (form_error('sign_in_password')) : ?>
+		<?php echo form_password(array('name' => 'sign_in_password', 'id' => 'sign_in_password', 'value' => set_value('sign_in_password'), 'class' => 'form-control'));
+		if (form_error('sign_in_password')) : ?>
 			<span class="help-inline"><?php echo form_error('sign_in_password'); ?></span>
 		<?php endif; ?>
 

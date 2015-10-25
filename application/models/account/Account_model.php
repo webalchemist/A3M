@@ -166,13 +166,13 @@ class Account_model extends CI_Model
 		$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
 		$new_hashed_password = $hasher->HashPassword($password_new);
 
-		$this->db->update($this->db->dbprefix . 'a3m_account', array('password' => $new_hashed_password), array('id' => $account_id));
+		$this->db->update($this->db->dbprefix . 'a3m_account', array('password' => $new_hashed_password, 'forceresetpass' => FALSE), array('id' => $account_id));
 	}
 
 	// --------------------------------------------------------------------
 
 	/**
-	 * Update account last signed in dateime
+	 * Update account last signed in datetime
 	 *
 	 * @access public
 	 * @param int $account_id
@@ -200,7 +200,7 @@ class Account_model extends CI_Model
 
 		$resetsenton = mdate('%Y-%m-%d %H:%i:%s', now());
 
-		$this->db->update($this->db->dbprefix . 'a3m_account', array('resetsenton' => $resetsenton), array('id' => $account_id));
+		$this->db->update($this->db->dbprefix . 'a3m_account', array('resetsenton' => $resetsenton, 'forceresetpass' => TRUE), array('id' => $account_id));
 
 		return strtotime($resetsenton);
 	}

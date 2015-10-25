@@ -22,7 +22,7 @@ class Hybrid_auth_lib extends Hybrid_Auth
      * @var object
      */
     var $CI, $setup;
-    
+
     /**
      * Constructor
      * @return object
@@ -31,18 +31,18 @@ class Hybrid_auth_lib extends Hybrid_Auth
     {
         $this->CI =& get_instance();
         $this->CI->load->helper('url_helper');
-        
+        $this->CI->config->load('account/account');
+
         //get config for Hybrid Auth
         $this->setup = $this->CI->config->item('third_party_auth');
-        
+
         $this->setup['base_url'] = site_url($this->setup['base_url']);
-        
+
         parent::__construct($this->setup);
-        //$this->ha = new Hybrid_Auth($this->setup);
-        
+
         log_message('debug', 'Hybrid_Auth_Lib Class Initalized');
     }
-    
+
     /**
      * Enabled providers
      * @param array $provider Providers set in the config file

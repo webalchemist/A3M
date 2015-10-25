@@ -198,9 +198,9 @@ class Authentication
 
 		$this->CI->Account_model->update_last_signed_in_datetime($account_id);
 
-		check_reset_password($account_id);
+		//TODO implement remember me functionality
 
-    //TODO implement remember me functionality
+		check_reset_password($account_id);
 
 		// Redirect signed in user with session redirect
 		if ($redirect = $this->CI->session->userdata('sign_in_redirect'))

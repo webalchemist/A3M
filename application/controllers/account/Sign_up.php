@@ -135,7 +135,7 @@ class Sign_up extends CI_Controller
 						else
 						{
 							show_error(lang('website_email_send_error'));
-                                                        log_message('error', $this->email->print_debugger());
+							log_message('error', $this->email->print_debugger());
 						}
 					}
 

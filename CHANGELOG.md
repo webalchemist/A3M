@@ -10,12 +10,13 @@
 * New feature: Authorization library is_role() now accepts arrays
 * New feature: Added support for DocBlock documentation generation
 * New feature: Can now set settings min and max length for username and min length for password
-* Update: Update to jQuery 2.1.1
-* Update: Updated Twitter Bootstrap to 3.2.0
+* Update: Update to jQuery 2.1.4
+* Update: Updated Twitter Bootstrap to 3.3.5
 * Update: #70 Updated to Twitter Bootstrap 3.0.3
 * Update: #47 Updated to CodeIgniter 3.
 * Update: Update of authorization library so that are compared roles and permissions are lower string before being compared.
 * Update: .htaccess based on @chego77 suggestion. If you are using NGINX use: `location / { if (!-e $request_filename) { rewrite ^(.*)$ /index.php?/$1 last; } }` (thanks to @sventech)
+* Update: #120 Update reCaptcha
 * Change: #70 Changed the naming structure for A3M.
 * Change: #56 Removed full name and postal code from user details and DB.
 * Change: Changed how views are called. Now using a template into which all views are inserted.

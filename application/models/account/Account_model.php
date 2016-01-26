@@ -109,9 +109,7 @@ class Account_model extends CI_Model
 		// Create password hash using phpass
 		if ($password !== NULL)
 		{
-			$this->load->helper('account/phpass');
-			$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
-			$hashed_password = $hasher->HashPassword($password);
+			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 		}
 
 		$this->load->helper('date');
@@ -162,10 +160,7 @@ class Account_model extends CI_Model
 	 */
 	function update_password($account_id, $password_new)
 	{
-		$this->load->helper('account/phpass');
-		$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
-		$new_hashed_password = $hasher->HashPassword($password_new);
-
+		$new_hashed_password = password_hash($password_new, PASSWORD_BCRYPT);
 		$this->db->update($this->db->dbprefix . 'a3m_account', array('password' => $new_hashed_password, 'forceresetpass' => FALSE), array('id' => $account_id));
 	}
 

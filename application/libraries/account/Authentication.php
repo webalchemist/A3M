@@ -245,11 +245,7 @@ class Authentication
 	 */
 	private function check_password($password_hash, $password)
 	{
-		$this->CI->load->helper('account/phpass');
-
-		$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
-
-		return $hasher->CheckPassword($password, $password_hash) ? TRUE : FALSE;
+		return password_verify($password , $password_hash);
 	}
 
 	/**

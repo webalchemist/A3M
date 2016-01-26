@@ -1,7 +1,7 @@
 {
-	"name" : "donjakobo/A3M",
+	"name" : "webalche/A3M",
 	"description" : "Dependencies for A3M v2",
 	"require": {
-		"php": ">=5.3"
-	},
+		"php": ">=5.5"
+	}
 }

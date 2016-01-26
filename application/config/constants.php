@@ -99,9 +99,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
  */
 define('RES_DIR', 'resource');
 
-/*
- * Portable PHP password hashing framework
- * http://www.openwall.com/phpass/
- */
-define('PHPASS_HASH_STRENGTH', 8);
-define('PHPASS_HASH_PORTABLE', FALSE);
+

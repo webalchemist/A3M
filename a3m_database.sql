@@ -165,23 +165,6 @@ CREATE TABLE IF NOT EXISTS `a3m_rel_role_permission` (
 INSERT INTO `a3m_rel_role_permission` (`role_id`, `permission_id`)
 SELECT 1, `id` FROM `a3m_acl_permission`;
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ci_sessions`
---
-DROP TABLE IF EXISTS `ci_sessions` ;
-
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
-  `id` varchar(40) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
-  `data` blob DEFAULT '' NOT NULL,
-  PRIMARY KEY (id),
-  KEY `ci_sessions_timestamp` (`timestamp`)
-);
-
 -- --------------------------------------------------------
 
 --
